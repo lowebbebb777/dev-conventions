@@ -25,4 +25,5 @@ python -m unittest discover -s tests -p "*.py"
 1. **1 Step = 1 コミット**。メッセージに仕様の節番号。
 2. `docs/STATE.md` を**上書き更新**。
 3. `docs/LOG.md` に**1エントリ追記**。
-4. エージェント固有メモリに repo の事実を置かない。
+4. **`python F:\AI_KEY\90_INTEGRITY\sync_aikey.py` を実行**し、Google Drive (正本) ⇄ USB (写し) の自動同期とハッシュマニフェスト再生成を行う。
+5. エージェント固有メモリに repo の事実を置かない。
