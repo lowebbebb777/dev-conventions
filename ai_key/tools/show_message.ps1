@@ -1,6 +1,17 @@
 # AI_KEY メッセージ表示(Windowsダイアログ)。手動(START.cmd)と常駐ウォッチャーで共用。
 param([string]$Root = (Split-Path $PSScriptRoot -Parent))
 
+# 6秒スロットル(多重起動時の二重表示を防ぐ)
+$marker = Join-Path $env:TEMP 'aikey_last_shown.txt'
+$now = Get-Date
+if (Test-Path $marker) {
+    try {
+        $last = Get-Content -LiteralPath $marker -TotalCount 1
+        if ($last -and (($now - [datetime]$last).TotalSeconds -lt 6)) { return }
+    } catch {}
+}
+$now.ToString('o') | Set-Content -LiteralPath $marker
+
 Add-Type -AssemblyName System.Windows.Forms | Out-Null
 
 $msg = @"
