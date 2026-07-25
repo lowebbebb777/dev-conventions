@@ -31,7 +31,8 @@
 4. ビルドとテストを実行し、結果(件数・緑/赤)を STATE と LOG に記録 / Run build and tests; record results.
 5. エージェント固有メモリ(`~/.claude` 等)だけに repo の事実を置かない / Never keep repo facts only in agent-private memory.
 
-## ショートカット / Shortcut: 「Do State」
-ユーザーが「Do State」「ds」「続き」等と言ったら、`docs/STATE.md` を読んで「残作業」の最上位から
-着手し、区切りでは上記「終了時の義務」に従う / When the user says "Do State"/"ds", read
-`docs/STATE.md`, start from the top remaining task, and follow the End-of-Session Duties.
+## ショートカット(合言葉)/ Shortcuts
+- **ds = 引継ぎする**: `docs/STATE.md` を読んで「残作業」の最上位から着手し、区切りでは上記
+  「終了時の義務」に従う / read STATE.md and start from the top remaining task.
+- **di = 引継ぎ登録**: 新規repoを規約に登録(テンプレから AGENTS/STATE/LOG 作成 +
+  `dev-conventions/projects.md` に1行追加 + commit)/ onboard a new repo.
