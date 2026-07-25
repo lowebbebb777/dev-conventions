@@ -34,5 +34,7 @@
 ## ショートカット(合言葉)/ Shortcuts
 - **ds = 引継ぎする**: `docs/STATE.md` を読んで「残作業」の最上位から着手し、区切りでは上記
   「終了時の義務」に従う / read STATE.md and start from the top remaining task.
+- **dm = 引継ぎ保存**: 途中経過を `docs/STATE.md`(次の一手)と `docs/LOG.md` に書いて commit /
+  checkpoint now before switching AI mid-task.
 - **di = 引継ぎ登録**: 新規repoを規約に登録(テンプレから AGENTS/STATE/LOG 作成 +
   `dev-conventions/projects.md` に1行追加 + commit)/ onboard a new repo.
