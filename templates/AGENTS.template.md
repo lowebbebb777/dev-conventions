@@ -28,6 +28,5 @@
 1. **1 Step = 1 コミット**。メッセージに仕様の節番号 / One step = one commit citing the spec section.
 2. `docs/STATE.md` を**上書き更新** / Overwrite `docs/STATE.md`.
 3. `docs/LOG.md` に**1エントリ追記** / Append one entry to `docs/LOG.md`.
-4. **`python F:\AI_KEY\90_INTEGRITY\sync_aikey.py` を実行**し、Google Drive (正本) ⇄ USB (写し) の自動同期とハッシュマニフェスト再生成を行う。
-5. ビルドとテストを実行し、結果(件数・緑/赤)を STATE と LOG に記録 / Run build and tests; record results.
-6. エージェント固有メモリ(`~/.claude` 等)だけに repo の事実を置かない / Never keep repo facts only in agent-private memory.
+4. ビルドとテストを実行し、結果(件数・緑/赤)を STATE と LOG に記録 / Run build and tests; record results.
+5. エージェント固有メモリ(`~/.claude` 等)だけに repo の事実を置かない / Never keep repo facts only in agent-private memory.
