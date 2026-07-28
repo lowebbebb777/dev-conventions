@@ -1,11 +1,12 @@
 # STATE — 現在地 / Current Position
 
-最終更新 / Last updated: 2026-07-25 Antigravity
+最終更新 / Last updated: 2026-07-28 Codex @ 21eb582
 
 ## 検証済みの事実
 
 - ドキュメント整備: `README.md`, `global-pointer.md`, `ai_key/` 整備完了 (2026-07-25)
 - AI_KEY 連携: `F:\AI_KEY\` との構造・テンプレ共通化完了 (2026-07-25)
+- SleepSoundOne: AGENTS/STATE/LOG導入と`projects.md`登録完了 (2026-07-28)
 
 ## ドキュメントの優先順位
 
