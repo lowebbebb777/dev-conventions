@@ -2,6 +2,15 @@
 
 ---
 
+## 2026-07-30 Antigravity (Gemini 3.6 Flash)
+
+- やったこと: 省トークン・テスト駆動運用規約 (Zero-Token-Waste & TDD Rules) の追加、および `tools/ast_summary.py` (AST構造抽出) / `tools/mcp_state.py` (JSON構造化ステート) を共通ツールとして追加。
+- 逸脱・追加・スキップ: なし
+- 検証: ツールの単体実行およびテンプレ同期確認
+- 申し送り: 全プロジェクトへ共通適用可能な最小トークン標準エコシステムとして管理。
+
+---
+
 ## 2026-07-25 Antigravity
 
 - やったこと: `AGENTS.md`, `docs/STATE.md`, `docs/LOG.md` の新規作成および dev-conventions のマルチエージェント標準化。

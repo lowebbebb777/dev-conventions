@@ -31,6 +31,17 @@
 4. ビルドとテストを実行し、結果(件数・緑/赤)を STATE と LOG に記録 / Run build and tests; record results.
 5. エージェント固有メモリ(`~/.claude` 等)だけに repo の事実を置かない / Never keep repo facts only in agent-private memory.
 
+## 省トークン・テスト駆動運用規約 / Zero-Token-Waste & TDD Rules
+
+1. **おしゃべり・前置き・丁寧すぎる解説の完全禁止 / No Chatting & Over-explanation**:
+   - 会話や応答における無駄な挨拶や自己解説は行わず、**「変更点」と「テスト結果 (PASS/FAIL)」のみを最大 5 行以内で簡潔に報告**すること。
+2. **コード丸読みの禁止と AST / 構造検索ツールの活用 / AST & Structural Search**:
+   - コードベース構造の探索時は、`tools/ast_summary.py` や `grep_search` を優先利用し、ファイル全体の無用なテキスト流し込みを避けること。
+3. **軽量構造化ステートマネージャー / Lightweight JSON State**:
+   - 現在地や状態管理には `tools/mcp_state.py` (JSON `.state.json`) を活用し、長文テキストの無駄な読み込みを防止すること。
+4. **テスト駆動 (TDD) 判定 / Test-Driven Judgment**:
+   - タスクの完了判定は自動テストが PASS することのみを基準とする。テストが PASS したら即座にコミットして終了すること。
+
 ## ショートカット(合言葉)/ Shortcuts
 - **ds = 引継ぎする**: `docs/STATE.md` を読んで「残作業」の最上位から着手し、区切りでは上記
   「終了時の義務」に従う / read STATE.md and start from the top remaining task.
