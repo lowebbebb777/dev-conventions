@@ -11,6 +11,7 @@
 - SleepSoundOne: AGENTS/STATE/LOG導入と`projects.md`登録完了 (2026-07-28)
 - 省トークン・TDDエコシステム: `tools/ast_summary.py` / `tools/mcp_state.py` 追加、AGENTS規約更新完了 (2026-07-30)
 - Ideas: dev-conventions準拠文書とIDEA-001をGitHubへ保存し、`projects.md`登録完了 (2026-08-02)
+- 共通ショートカット `did`: Ideasへの保存・共有（プロダクト実装は別指示）として定義 (2026-08-02)
 
 ## ドキュメントの優先順位
 

@@ -24,4 +24,7 @@ Paste only the text below into each AI tool's global settings. Never paste the c
   adopt silently.
 - 規約本体をこのファイルに複製しない(二重管理禁止。正は各repo内と dev-conventions)。
   Do not duplicate the convention body here; canon lives in each repo and dev-conventions.
+
+## ショートカット / Shortcut
+- **did = Ideasに登録 / deposit idea**: 会話中の重要アイデアを `lowebbebb777/Ideas` へ保存・共有する。IdeasのAGENTS/STATE/LOGに従い、プロダクト実装は別指示とする。
 ```

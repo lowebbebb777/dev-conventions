@@ -35,3 +35,12 @@
 - 逸脱・追加・スキップ / Deviations, additions, skips: ローカルパスは未固定のため`(clone先未固定)`と明記 — 理由: 一時作業ディレクトリを恒久パスとして登録しないため。
 - 検証 / Verification: Ideas必須8ファイル・IDEA-001全13節・UTF-8表示 ✅ / `projects.md`のIdeas登録1件 ✅ / STATE 50行以内 ✅ / 指定unittest ❌（既存`tests/`不在）
 - 申し送り / Notes for next runner: Ideasの正典は各`ideas/<slug>/IDEA.md`、残作業の正はIdeas側`docs/STATE.md`。dev-conventionsのテストコマンド不整合は残作業へ追加。
+
+---
+
+## 2026-08-02 Codex — `did`共通ショートカット
+
+- やったこと / Done: `did`を「会話中の重要アイデアをIdeasへ登録・共有する」共通ショートカットとして、AGENTS・global-pointer・新規repoテンプレートへ追加。
+- 逸脱・追加・スキップ / Deviations, additions, skips: なし。
+- 検証 / Verification: 3つの入口で`did`定義一致 ✅ / STATE 50行以内 ✅ / 指定unittest ❌（既存`tests/`不在、既知制約）
+- 申し送り / Notes for next runner: `di`は新規repo登録、`did`はIdeas登録。`did`単独指示では適用先プロダクトを実装しない。

@@ -49,3 +49,4 @@
   checkpoint now before switching AI mid-task.
 - **di = 引継ぎ登録**: 新規repoを規約に登録(テンプレから AGENTS/STATE/LOG 作成 +
   `dev-conventions/projects.md` に1行追加 + commit)/ onboard a new repo.
+- **did = Ideasに登録**: 会話中の重要アイデアを `lowebbebb777/Ideas` へ保存・共有し、プロダクト実装は別指示とする / deposit an idea in Ideas; implementation requires a separate instruction.

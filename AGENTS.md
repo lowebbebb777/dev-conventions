@@ -35,3 +35,4 @@ python -m unittest discover -s tests -p "*.py"
 - **ds = 引継ぎする**: `docs/STATE.md` を読んで「残作業」の最上位から着手。区切りでは上記「終了時の義務」に従う。
 - **dm = 引継ぎ保存**: 今の途中経過を `docs/STATE.md`(現在地・次の一手)と `docs/LOG.md` に書いて commit。タスク途中で別AIへ渡す前の強制セーブ。
 - **di = 引継ぎ登録**: 新規repoを規約に登録する合言葉。
+- **did = Ideasに登録**: 会話中の重要アイデアを `lowebbebb777/Ideas` へ新規登録または追記し、同repoのAGENTS/STATE/LOGに従ってcommit・pushする。適用先プロダクトへの実装は別指示とする。
