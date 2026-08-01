@@ -21,6 +21,14 @@ Canonical list of remaining work: this file.
 1. <作業 / task> — 仕様: <文書 §節 / doc §section>
 2. ...
 
+## アイディア棚 / Idea Shelf
+
+<!-- この1行は消さない。棚の存在を次走者に必ず気づかせるための唯一の仕掛け。
+     Never delete this line: it is the only mechanism that makes the shelf discoverable. -->
+
+`docs/IDEAS.md`(N件 / N entries)— **着手前に関連語で grep**。通読しない /
+grep by keyword before starting; do not read it through.
+
 ## 未検証項目 / Unverified Items
 
 <!-- 「完了と誤認すると事故る」ものだけ。Only items where mistaking them as done causes accidents. -->

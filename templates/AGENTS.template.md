@@ -29,12 +29,20 @@
 2. `docs/STATE.md` を**上書き更新** / Overwrite `docs/STATE.md`.
 3. `docs/LOG.md` に**1エントリ追記** / Append one entry to `docs/LOG.md`.
 4. ビルドとテストを実行し、結果(件数・緑/赤)を STATE と LOG に記録 / Run build and tests; record results.
+   **新しいテストは、修正前のコードで FAIL することを確認してから緑にする**(緑だけでは
+   何も検証していないテストと区別できない)/ Confirm each new test FAILS against the pre-fix
+   code before accepting green.
 5. エージェント固有メモリ(`~/.claude` 等)だけに repo の事実を置かない / Never keep repo facts only in agent-private memory.
+6. 今やらない案が出たら `docs/IDEAS.md` に**語＋手がかり1行**を追記する。STATE には置かない /
+   Park ideas you won't implement now in `docs/IDEAS.md` as *a word + a one-line hook* — never in STATE.
 
 ## ショートカット(合言葉)/ Shortcuts
 - **ds = 引継ぎする**: `docs/STATE.md` を読んで「残作業」の最上位から着手し、区切りでは上記
   「終了時の義務」に従う / read STATE.md and start from the top remaining task.
 - **dm = 引継ぎ保存**: 途中経過を `docs/STATE.md`(次の一手)と `docs/LOG.md` に書いて commit /
   checkpoint now before switching AI mid-task.
-- **di = 引継ぎ登録**: 新規repoを規約に登録(テンプレから AGENTS/STATE/LOG 作成 +
-  `dev-conventions/projects.md` に1行追加 + commit)/ onboard a new repo.
+- **di = 引継ぎ登録**: 新規repoを規約に登録(テンプレから AGENTS/STATE/LOG/IDEAS +
+  `tests/test_conventions.py` を作成 + `dev-conventions/projects.md` に1行追加 + commit)/
+  onboard a new repo.
+- **did = アイディアを棚に落とす**: 直前に出た案を `docs/IDEAS.md` へ**詩的な1文**で追記 /
+  park the idea just raised as a single poetic line; never in STATE.

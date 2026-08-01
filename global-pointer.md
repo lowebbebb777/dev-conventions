@@ -24,4 +24,14 @@ Paste only the text below into each AI tool's global settings. Never paste the c
   adopt silently.
 - 規約本体をこのファイルに複製しない(二重管理禁止。正は各repo内と dev-conventions)。
   Do not duplicate the convention body here; canon lives in each repo and dev-conventions.
+
+## ショートカット(合言葉・全AI共通)/ Shortcuts
+- **ds = 引継ぎする**: 今いる repo の `docs/STATE.md`(無ければ `AGENTS.md`)を読み、
+  「残作業」の最上位から着手する。区切りではその repo の `AGENTS.md`「終了時の義務」に従う。
+- **dm = 引継ぎ保存**: 途中経過を `docs/STATE.md`(現在地・次の一手)と `docs/LOG.md` に書いて commit。
+- **di = 引継ぎ登録**: このrepoを規約に登録 — テンプレから `AGENTS.md`/`docs/STATE.md`/
+  `docs/LOG.md`/`docs/IDEAS.md`/`tests/test_conventions.py` を作成 + `projects.md` に1行追加 + commit。
+  既にあるファイルは上書きしない。
+- **did = アイディアを棚に落とす**: 直前に出た案を `docs/IDEAS.md` へ**詩的な1文**で追記する。
+  仕様も手順も書かない。STATE には置かない(現在地が肥大するため)。
 ```

@@ -13,8 +13,10 @@
 ## ビルド・環境(Windows)
 
 ```powershell
-python -m unittest discover -s tests -p "*.py"
+python -m unittest discover -s tests -p "test_*.py"
 ```
+
+規約の機械チェック(行数上限・索引の実在・必須ファイル)は `tests/test_conventions.py`。
 
 ## 不変条件
 
@@ -25,4 +27,7 @@ python -m unittest discover -s tests -p "*.py"
 1. **1 Step = 1 コミット**。メッセージに仕様の節番号。
 2. `docs/STATE.md` を**上書き更新**。
 3. `docs/LOG.md` に**1エントリ追記**。
-4. エージェント固有メモリに repo の事実を置かない。
+4. `python -m unittest discover -s tests -p "test_*.py"` が緑であること。
+   新テストは**修正前コードで FAIL することを確認**してから緑にする(README 原則2)。
+5. エージェント固有メモリに repo の事実を置かない。
+6. 今やらない案は `docs/IDEAS.md` に**語＋手がかり1行**。STATE には置かない(README 原則7)。
