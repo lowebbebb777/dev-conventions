@@ -19,7 +19,7 @@ Keep the repo in a state where the next runner can locate the current position b
 | `AGENTS.md` | ほぼ不変 / Rarely changes | 毎回 / always | 全エージェント共通の入口。環境・規則・ポインタのみ / Common entry point: environment, rules, pointers only |
 | `docs/STATE.md` | **常に上書き** / Always overwritten | 毎回 / always | 現在地。1画面(50行)以内 / Current position. One screen (≤50 lines) |
 | `docs/LOG.md` | **追記のみ** / Append-only | 事故調査時 / on incident | セッション履歴と判断理由 / Session history and rationale |
-| `docs/IDEAS.md` | **追記のみ** / Append-only | **grep時のみ** / on grep | アイディア棚。1件＝語＋手がかり1行 / Idea shelf: one word + one-line hook per entry |
+| `docs/IDEAS.md` | **追記のみ** / Append-only | **grep時のみ** / on grep | アイディア棚。1件＝詩(散文でない1〜2文) / Idea shelf: one entry = a poetic line or two, never prose |
 
 分離の理由: 「現在地」と「履歴」を1ファイルに混ぜると、本文が陳腐化して
 冒頭に「⚠️この下は古い」バナーを貼る羽目になる(実際に起きた失敗)。

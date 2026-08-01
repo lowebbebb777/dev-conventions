@@ -5,10 +5,13 @@
      Append-only. Home for what belongs to neither STATE (current position) nor
      LOG (history): things worth recalling occasionally. NOT read every session. -->
 
-## 1件 = 詩的な1文 / One Entry = One Poetic Line
+## 1件 = 詩 / One Entry = A Poem
 
-アイディアは**情報量を含んだ詩的な1文だけ**を残す。仕様も手順も書かない。
-Keep only a single poetic line, dense with meaning. No specs, no steps.
+アイディアは**詩だけ**を残す。仕様も手順も書かない。
+Keep only the poem. No specs, no steps.
+
+**基準は長さではなく「散文でないこと」**。1文でも2文でもよい。
+The test is not length but *not-prose*. One sentence or two, either is fine.
 
 なぜ詩か / Why poetry:
 
@@ -26,10 +29,15 @@ Keep only a single poetic line, dense with meaning. No specs, no steps.
 
 ### 書き方 / Rules
 
-- **1文。改行しない**。**1文にならないものは、まだアイディアではなく作業**(→ `docs/STATE.md`)。
-  これが棚と現在地の境界。詩に畳むのではなく、**詩が原形で、仕様書のほうが展開された劣化版**
-  One line, no wrapping. If it will not fit in one line it is not an idea yet — it is a task
-  (→ STATE). The line is not a compression of the idea; the spec is an expansion of it.
+- **散文にしない。1〜2文**。**説明を足したくなった時点で、それはアイディアではなく作業**
+  (→ `docs/STATE.md`)。これが棚と現在地の境界。詩に畳むのではなく、
+  **詩が原形で、仕様書のほうが展開された劣化版**
+  Never prose; one or two lines. The moment you want to *explain* it, it is a task, not an
+  idea (→ STATE). The line is not a compression of the idea; the spec is an expansion of it.
+- **意味不明にしない**。復元できない詩は、復号器を持たない符号と同じで無価値。
+  暗号ではなく、**最短の像**を書く
+  Never cryptic. A line that cannot be unpacked is worth as much as a code with no decoder —
+  write the shortest *image*, not a riddle.
 - **その分野の名詞を必ず1つ入れる**(grep の取っ手になる)
   Include at least one domain noun — it is the grep handle.
 - 着手したら `→ 着手` と印を付け、中身は `docs/STATE.md` の残作業へ移す
@@ -38,11 +46,11 @@ Keep only a single poetic line, dense with meaning. No specs, no steps.
 
 ## 棚 / Shelf
 
-| 詩 / Line | 日付 / Date | 状態 / Status |
-|---|---|---|
-| <情報量を含んだ1文> | YYYY-MM-DD | 未着手 / open |
+表は使わない(2文が折り返して読めなくなる)。1件1項目 / No tables — two-line poems wrap badly.
+
+- <詩> — `YYYY-MM-DD` 未着手
 
 <!-- 例 / Examples:
-| 訊かれる前に読んでおけば、往復は一度消える。 | 2026-08-02 | 未着手 |
-| 受け手が復号器を持たない符号は、どれほど密でも沈黙と同じ。 | 2026-08-02 | 却下 |
+- 訊かれる前に読んでおけば、往復は一度消える。 — `2026-08-02` 未着手
+- 受け手が復号器を持たない符号は、どれほど密でも沈黙と同じ。 — `2026-08-02` 却下
 -->

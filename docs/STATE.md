@@ -7,7 +7,7 @@
 - ドキュメント整備: `README.md`, `global-pointer.md`, `ai_key/` 整備完了 (2026-07-25)
 - AI_KEY 連携: `F:\AI_KEY\` との構造・テンプレ共通化完了 (2026-07-25)
 - SleepSoundOne: AGENTS/STATE/LOG導入と`projects.md`登録完了 (2026-07-28)
-- **4ファイル構成へ移行** (2026-08-02): `docs/IDEAS.md` を追加。1件＝詩的な1文。
+- **4ファイル構成へ移行** (2026-08-02): `docs/IDEAS.md` を追加。1件＝**詩**(散文でない1〜2文)。
   分離基準は重要度でなく**アクセス頻度**(README §4ファイル構成)
 - **規約の機械チェック新設** (2026-08-02): `tests/test_conventions.py` — **7件 緑**。
   `python -m unittest discover -s tests -p "test_*.py"`。
@@ -20,7 +20,7 @@
 
 ## アイディア棚
 
-`docs/IDEAS.md`(10件)— **着手前に関連語で grep**。通読しない
+`docs/IDEAS.md`(11件)— **着手前に関連語で grep**。通読しない
 
 ## 残作業(優先順)
 
