@@ -32,22 +32,22 @@ def _read(rel: str) -> str:
     return (ROOT / rel).read_text(encoding="utf-8")
 
 
-def parse_project_paths(projects_md: str) -> list[tuple[str, str]]:
-    """projects.md の表から (プロジェクト名, ローカルパス) を取り出す。
+def parse_projects(projects_md: str) -> list[tuple[str, str, str]]:
+    """projects.md の表から (プロジェクト名, ローカルパス, remote) を取り出す。
 
     行の形: | 名前 | `C:\\...\\path` | remote | 正典 |
     ヘッダ・区切り行・コメントは自然に弾かれる(バッククォート付きパスが無いため)。
     """
-    found: list[tuple[str, str]] = []
+    found: list[tuple[str, str, str]] = []
     for line in projects_md.splitlines():
         if not line.startswith("|"):
             continue
         cells = [c.strip() for c in line.strip().strip("|").split("|")]
-        if len(cells) < 2:
+        if len(cells) < 3:
             continue
         m = re.fullmatch(r"`([^`]+)`", cells[1])
         if m:
-            found.append((cells[0], m.group(1)))
+            found.append((cells[0], m.group(1), cells[2]))
     return found
 
 
@@ -86,15 +86,26 @@ class StateFile(unittest.TestCase):
 
 
 class ProjectIndex(unittest.TestCase):
-    """索引は、指した先が消えても平気な顔をしている。"""
+    """索引は、指した先が消えても平気な顔をしている。
 
-    def test_registered_paths_exist(self):
-        entries = parse_project_paths(_read("projects.md"))
+    各行は「ローカルに実在する」か「remote から clone できる」のどちらかで
+    必ず辿れなければならない。どちらでもない行は、次走者を空振りさせる。
+    """
+
+    def test_every_entry_is_reachable(self):
+        entries = parse_projects(_read("projects.md"))
         self.assertTrue(entries, "projects.md からプロジェクト行を1件も抽出できなかった")
-        dead = [(name, p) for name, p in entries if not Path(p).is_dir()]
+        unreachable = []
+        for name, path, remote in entries:
+            if Path(path).is_dir():
+                continue                      # ローカルにある
+            if "github.com/" in remote:
+                continue                      # clone できる(ローカル未固定でよい)
+            unreachable.append((name, path, remote))
         self.assertEqual(
-            [], dead,
-            f"projects.md がローカルに存在しないパスを指している: {dead}",
+            [], unreachable,
+            "projects.md にローカルにも remote にも辿れない行がある: "
+            f"{unreachable}",
         )
 
 

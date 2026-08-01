@@ -14,6 +14,8 @@ AIが「どのプロジェクトを引き継ぐか」を選ぶための一覧。
 | SleepSoundOne(Android自然音・Ma音響アプリ) | `C:\Users\soich\AndroidStudioProjects\SleepSoundOne` | github.com/lowebbebb777/SleepSoundOne | `docs/android_audio_pipeline.md` → `docs/STATE.md` |
 | Runova(WebAI駆動エージェンティックCLI/GUI) | `C:\Users\soich\PycharmProjects\Runova` | (要確認) | `AGENTS.md` → `docs/STATE.md` → `docs/EX_STREAM_DESIGN.md` / `docs/architecture-provider-split.md` |
 
+| Ideas(RUNOVA Labs横断アイデア保管庫) | `(clone先未固定)` | github.com/lowebbebb777/Ideas | `README.md` → `docs/STATE.md` → `ideas/<slug>/IDEA.md` |
+
 <!-- 新規プロジェクトは1行追加するだけ。詳細は各repoのSTATE/LOGが持つ。
      remote URLがあれば埋める(他マシン・クラウドAIからcloneできるように)。
      ローカルに存在しないパスは行ごと削除する(tests/test_conventions.py が落とす)。
