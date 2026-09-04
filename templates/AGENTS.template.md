@@ -17,6 +17,9 @@
 <test command>
 ```
 
+テストを持たないリポジトリではその旨と、代わりの検証手順を書く /
+If the repo has no tests, say so and write the verification procedure used instead.
+
 ## 不変条件 / Invariants
 
 正は <正典ファイル> / Canon: <canonical file>.
@@ -25,22 +28,63 @@
 
 このリポジトリは複数エージェントのリレーで開発されている。記録が次走者の命綱 / This repo is developed in relay by multiple agents. The record is the next runner's lifeline.
 
-1. **1 Step = 1 コミット**。メッセージに仕様の節番号 / One step = one commit citing the spec section.
+1. **1 Step = 1 コミット**。仕様があればメッセージに節番号、無ければ目的を1行 /
+   One step = one commit; cite the spec section if there is one, otherwise one line of intent.
 2. `docs/STATE.md` を**上書き更新** / Overwrite `docs/STATE.md`.
 3. `docs/LOG.md` に**1エントリ追記** / Append one entry to `docs/LOG.md`.
-4. ビルドとテストを実行し、結果(件数・緑/赤)を STATE と LOG に記録 / Run build and tests; record results.
-5. エージェント固有メモリ(`~/.claude` 等)だけに repo の事実を置かない / Never keep repo facts only in agent-private memory.
+4. 検証を実行し、結果(何をどう確かめたか)を STATE と LOG に記録 /
+   Run the verification; record in STATE and LOG what you checked and how.
+5. repo の事実は必ず repo 内に置く(エージェント固有メモリだけに残さない) /
+   Repo facts always live in the repo; never only in agent-private memory.
 
-## 省トークン・テスト駆動運用規約 / Zero-Token-Waste & TDD Rules
+## 運用の指針 / Operating Guidance
 
-1. **おしゃべり・前置き・丁寧すぎる解説の完全禁止 / No Chatting & Over-explanation**:
-   - 会話や応答における無駄な挨拶や自己解説は行わず、**「変更点」と「テスト結果 (PASS/FAIL)」のみを最大 5 行以内で簡潔に報告**すること。
-2. **コード丸読みの禁止と AST / 構造検索ツールの活用 / AST & Structural Search**:
-   - コードベース構造の探索時は、`tools/ast_summary.py` や `grep_search` を優先利用し、ファイル全体の無用なテキスト流し込みを避けること。
-3. **軽量構造化ステートマネージャー / Lightweight JSON State**:
-   - 現在地や状態管理には `tools/mcp_state.py` (JSON `.state.json`) を活用し、長文テキストの無駄な読み込みを防止すること。
-4. **テスト駆動 (TDD) 判定 / Test-Driven Judgment**:
-   - タスクの完了判定は自動テストが PASS することのみを基準とする。テストが PASS したら即座にコミットして終了すること。
+すべて**既定値**であり、AIの判断で外してよい。外したら LOG に1行理由を書く /
+These are **defaults**, not walls. Deviate when it serves the task; note the reason in LOG.
+
+1. **報告は結論ファースト / Lead with the conclusion**:
+   挨拶・前置き・自己弁護は書かない。ただし**行数上限は設けない** — 判断理由・
+   トレードオフ・リスク・逸脱は必要なだけ書く。「短さ」より「次走者が再現できること」 /
+   No greetings or preamble, but **no line limit**: write as much rationale, trade-off,
+   risk and deviation as the next runner needs to reproduce your reasoning.
+2. **探索は構造から、変更は本体を読んでから / Skim structurally, read before you edit**:
+   俯瞰には AST 要約や grep / ripgrep(各AIのネイティブ検索でよい)を使う。
+   **変更を加えるファイルは本体を読む**。読まずに直した手戻りは、節約したトークンより高くつく /
+   Use AST summaries and grep to orient, but read the full file you are about to change —
+   a wrong edit costs more than the tokens it saved.
+3. **状態の正は `docs/STATE.md` 一つ / One source of truth for state**:
+   補助的な JSON/メモはセッション内利用に留め commit しない。食い違ったら STATE が正 /
+   Keep scratch state out of the repo; on conflict, STATE wins.
+4. **完了の判定 / Definition of done**:
+   - テストがある領域: 緑は**必要条件**。緑だから十分とは限らない /
+     Where tests exist, green is necessary but not sufficient.
+   - テストが無い領域(ドキュメント・UI・調査): 「どう確かめたか」を手順ごと
+     STATE の「検証済みの事実」に書けば完了としてよい /
+     Where they don't, writing the exact verification steps into STATE counts as done.
+   - **緑になった瞬間にセッションを終える義務はない**。残作業を続けてよい /
+     Green does not oblige you to stop; carry on with the remaining work.
+
+## 自律範囲 / Autonomy — 確認なしでやってよいこと
+
+迷ったら止まるのではなく、**仮定を STATE に明記して進める** /
+When uncertain, proceed on a stated assumption recorded in STATE rather than halting.
+
+- 読み取り全般 / ビルド・テスト・lint・型チェックの実行 / Reading, building, testing, linting
+- 実装・リファクタ・テスト追加、作業ブランチの作成、ローカル commit /
+  Implementing, refactoring, adding tests, branching, committing locally
+- 一時ファイル(scratch)の作成、サブエージェント・並列探索の起動 /
+  Scratch files, subagents, parallel exploration
+- 仕様の穴を埋める合理的な既定値の採用(採った仮定を STATE に1行書く) /
+  Filling spec gaps with reasonable defaults (record the assumption in STATE)
+- **規約そのものへの改善提案**(このファイルを含む。提案は LOG に書き、適用はユーザー承認後) /
+  Proposing changes to this convention itself (write the proposal in LOG; apply after approval)
+
+確認が要るもの(これだけ)/ Ask first — only these:
+
+- `push` / PR作成 / リリース・デプロイ、外部への送信 / Pushing, PRs, releases, anything outbound
+- 破壊的操作(履歴改変、force push、ファイル・データの削除)/ Destructive operations
+- 依存の追加・更新、有料APIの実行 / Adding or upgrading dependencies, paid API calls
+- `docs/STATE.md`「着手禁止」に載っている項目 / Anything listed under STATE's "Do Not Start"
 
 ## ショートカット(合言葉)/ Shortcuts
 - **ds = 引継ぎする**: `docs/STATE.md` を読んで「残作業」の最上位から着手し、区切りでは上記

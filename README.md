@@ -17,7 +17,7 @@ Keep the repo in a state where the next runner can locate the current position b
 | ファイル / File | 性質 / Nature | 役割 / Role |
 |---|---|---|
 | `AGENTS.md` | ほぼ不変 / Rarely changes | 全エージェント共通の入口。環境・規則・ポインタのみ / Common entry point: environment, rules, pointers only |
-| `docs/STATE.md` | **常に上書き** / Always overwritten | 現在地。1画面(50行)以内 / Current position. One screen (≤50 lines) |
+| `docs/STATE.md` | **常に上書き** / Always overwritten | 現在地。目安1画面(50行)。正確さが上限に優先 / Current position. ~50 lines as a guide; accuracy outranks the limit |
 | `docs/LOG.md` | **追記のみ** / Append-only | セッション履歴と判断理由 / Session history and rationale |
 
 分離の理由: 「現在地」と「履歴」を1ファイルに混ぜると、本文が陳腐化して
@@ -27,18 +27,25 @@ with a "⚠️ outdated below" banner on top (a failure we actually experienced)
 
 ## 原則 / Principles
 
-1. **1 Step = 1 コミット**。メッセージに仕様の節番号。未コミットで引き継がない。
-   One step = one commit, citing the spec section. Never hand off uncommitted work.
-2. **散文よりテスト**。「完了」の根拠はテスト緑。受け入れ条件は可能な限りテストに落とす。
-   Tests over prose. "Done" means green tests. Turn acceptance criteria into tests wherever possible.
+1. **1 Step = 1 コミット**。仕様があればメッセージに節番号、無ければ目的を1行。
+   未コミットで引き継がない。
+   One step = one commit — cite the spec section if there is one, otherwise one line of
+   intent. Never hand off uncommitted work.
+2. **散文より検証可能な根拠**。受け入れ条件は可能な限りテストに落とす。テストがある領域では
+   緑が必要条件(緑=十分ではない)。テストを持てない領域(ドキュメント・UI・調査)は、
+   「何をどう確かめたか」を手順ごと STATE に書くことが根拠になる。
+   Verifiable evidence over prose. Turn acceptance criteria into tests wherever possible;
+   where tests exist, green is necessary but not sufficient. Where tests cannot exist
+   (docs, UI, investigation), the evidence is the verification procedure written into STATE.
 3. **黙った逸脱の禁止**。仕様に無いことをやったら LOG の「逸脱」欄に理由つきで申告。
    No silent deviations. Anything beyond spec goes in the LOG's "Deviations" field with a reason.
 4. **古い進捗記述は消す**。履歴は LOG と git にある。STATE に歴史を溜めない。
    Delete stale progress notes. History lives in LOG and git; STATE hoards no past.
-5. **エージェント固有メモリに repo の事実を置かない**。`~/.claude` 等は他エージェントから
-   見えない。次走者が必要とする情報は必ず repo 内に置く。
-   No repo facts in agent-private memory (`~/.claude` etc. is invisible to other agents).
-   Anything the next runner needs lives in the repo.
+5. **repo の事実は repo 内に置く**。`~/.claude` 等のエージェント固有メモリは他エージェントから
+   見えないため、そこ**だけ**に置かない。併用は自由 — 次走者が必要とする情報が repo 内に
+   あることだけを担保する。
+   Repo facts live in the repo. Agent-private memory (`~/.claude` etc.) is invisible to other
+   agents, so never let it be the *only* copy; using it alongside the repo is fine.
 6. **矛盾の仲裁ルールを文書側に持たせる**。エージェント同士は会話できない。
    優先順位(どの文書が正か)を AGENTS.md / STATE.md に明記する。
    Encode conflict arbitration in the docs. Agents cannot talk to each other;
