@@ -38,8 +38,14 @@ The test is not length but *not-prose*. One sentence or two, either is fine.
   暗号ではなく、**最短の像**を書く
   Never cryptic. A line that cannot be unpacked is worth as much as a code with no decoder —
   write the shortest *image*, not a riddle.
-- **その分野の名詞を必ず1つ入れる**(grep の取っ手になる)
-  Include at least one domain noun — it is the grep handle.
+- **詩の外に、具体語のタグを2語以上付ける**(grep の取っ手)。詩は名詞を削ぎ落とす形式なので、
+  **詩の中の名詞だけでは grep に掛からない**。ファイル名・成果物名など、**次にこの案を必要とする
+  人が打ちそうな語**を書く。抽象語(「境界」等)だけで埋めない
+  Tag each entry with **two or more concrete words**, outside the poem. Poetry strips the very
+  nouns you would grep for, so the poem alone is not findable. Use file names and artifact
+  names — whatever the next runner would actually type. Abstract words alone do not count.
+- タグは**説明ではない**ので「説明を足したら作業」の線は越えない。詩は詩のまま置く
+  Tags are not explanation, so they do not cross the line into "task"; leave the poem intact.
 - 着手したら `→ 着手` と印を付け、中身は `docs/STATE.md` の残作業へ移す
 - **却下も消さない**。却下理由こそ一番効く1文になる(同じ死に方を二度しない)
   Never delete rejected ideas; the reason is usually the sharpest line on the shelf.
@@ -48,9 +54,12 @@ The test is not length but *not-prose*. One sentence or two, either is fine.
 
 表は使わない(2文が折り返して読めなくなる)。1件1項目 / No tables — two-line poems wrap badly.
 
-- <詩> — `YYYY-MM-DD` 未着手
+- <詩> — `YYYY-MM-DD` <状態> — `<タグ>` `<タグ>` ...
+
+状態 / status: `未着手` / `→ 着手` / `採用済` / `却下`
 
 <!-- 例 / Examples:
-- 訊かれる前に読んでおけば、往復は一度消える。 — `2026-08-02` 未着手
-- 受け手が復号器を持たない符号は、どれほど密でも沈黙と同じ。 — `2026-08-02` 却下
+- 訊かれる前に読んでおけば、往復は一度消える。 — `2026-08-02` 未着手 — `先読み` `往復` `STATE.md`
+- 索引は、指した先が消えても平気な顔をしている。 — `2026-08-02` → 着手 — `projects.md` `到達性`
+- 受け手が復号器を持たない符号は、どれほど密でも沈黙と同じ。 — `2026-08-02` 却下 — `圧縮` `QR`
 -->
