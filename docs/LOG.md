@@ -177,3 +177,28 @@
 - 申し送り / Notes for next runner:
   - `did` は**今いる repo の `docs/IDEAS.md`** へ詩で落とす。Ideas repo は明示指示時のみ。
   - `global-pointer.md` の再貼り付けはユーザー作業。未反映だと他エージェントに伝わらない。
+
+---
+
+## 2026-09-04 Antigravity — 現存する全リポジトリへの最新引き継ぎ規約の一斉適用
+
+- やったこと:
+  - ユーザー指示に基づき、現存する全プロジェクトおよびその最新Remoteコミットへ最新規約体系（運用の指針・自律範囲・4ファイル構成・IDEAS棚grepタグ必須化・test_conventions.py機械チェック）を一斉適用。
+  - 対象リポジトリ（全7件 + dev-conventions）:
+    1. SleepSoundSampler (C:\Users\soich\PycharmProjects\SleepSoundSampler): 最新Remote pull、AGENTS/STATE/LOG更新、IDEAS新設、test_conventions配備 (5件緑)
+    2. sleepsm (C:\Users\soich\AndroidStudioProjects\sleepsm): 最新Remote pull、AGENTS/STATE/LOG更新、IDEAS新設、test_conventions配備 (5件緑)
+    3. Runova (C:\Users\soich\PycharmProjects\Runova): AGENTS/STATE/LOG更新、IDEAS全エントリにgrepタグ付与、test_conventionsにIdeaShelf追加 (7件緑)
+    4. Facefusionkai (C:\AI\Facefusionkai): AGENTS/STATE/LOG更新、IDEAS整形・grepタグ付与、test_conventions配備 (5件緑)
+    5. SleepSoundOne (C:\Users\soich\AndroidStudioProjects\SleepSoundOne): 4ファイル構成新設、AGENTS更新、test_conventions配備 (5件緑)
+    6. RanovaCLI (C:\Users\soich\PycharmProjects\RanovaCLI): AGENTS/STATE/LOG更新、IDEAS新設、test_conventions配備 (5件緑)
+    7. LLLM (C:\Users\soich\PycharmProjects\LLLM): 最新Remote pull、規約初期導入(di)、AGENTS/STATE/LOG/IDEAS/test_conventions配備 (5件緑)
+    8. dev-conventions: projects.md 索引適正化（sleepsm実体パス修正、新規repo登録）
+- 逸脱・追加・スキップ:
+  - SmartSleepManager のローカル実体は C:\Users\soich\AndroidStudioProjects\sleepsm (lowebbebb777/sleepsm) であったため、同リポジトリへ規約を適用し projects.md のパスを適正化。
+  - 公式クローンである C:\AI\facefusion は外部OSSであるため規約適用の対象外とした。
+- 検証:
+  - 各プロジェクトで python -m unittest discover -s tests -p "test_conventions.py" 実行、全件 PASS。
+  - dev-conventions で python -m unittest discover -s tests -p "test_*.py" 実行、8件全緑。
+  - 不正パス混入による逆検証で FAILED を確認。
+- 申し送り:
+  - 全リポジトリでローカルコミット作成済み。リモートへの push はユーザー確認・指示待ち。

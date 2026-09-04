@@ -9,10 +9,13 @@ AIが「どのプロジェクトを引き継ぐか」を選ぶための一覧。
 
 | プロジェクト | ローカルパス | remote | 正典ドキュメント |
 |---|---|---|---|
-| SmartSleepManager(Sleep v3 / Android睡眠アプリ) | `C:\Users\soich\AndroidStudioProjects\SmartSleepManager` | github.com/lowebbebb777/SmartSleepManager | `CLAUDE.md` → `docs/STATE.md` → `docs/DESIGN_V3_1.md` |
-| SleepSoundSampler(音響エンジン) | `C:\Users\soich\PycharmProjects\SleepSoundSampler` | (要確認) | `docs/ma_engine_design.md` / `docs/comfort_tuning_options_design.md` → `docs/STATE.md` |
-| SleepSoundOne(Android自然音・Ma音響アプリ) | `C:\Users\soich\AndroidStudioProjects\SleepSoundOne` | github.com/lowebbebb777/SleepSoundOne | `docs/android_audio_pipeline.md` → `docs/STATE.md` |
-| Runova(WebAI駆動エージェンティックCLI/GUI) | `C:\Users\soich\PycharmProjects\Runova` | (要確認) | `AGENTS.md` → `docs/STATE.md` → `docs/EX_STREAM_DESIGN.md` / `docs/architecture-provider-split.md` |
+| sleepsm(SmartSleepManager / Sleep v3) | `C:\Users\soich\AndroidStudioProjects\sleepsm` | github.com/lowebbebb777/sleepsm | `CLAUDE.md` → `docs/STATE.md` → `docs/DESIGN_V3_1.md` |
+| SleepSoundSampler(音響エンジン) | `C:\Users\soich\PycharmProjects\SleepSoundSampler` | github.com/lowebbebb777/SleepSoundSampler | `docs/ma_engine_design.md` / `docs/comfort_tuning_options_design.md` → `docs/STATE.md` |
+| SleepSoundOne(Android自然音・Ma音響アプリ) | `C:\Users\soich\AndroidStudioProjects\SleepSoundOne` | github.com/lowebbebb777/SleepSoundOne | `AGENTS.md` → `docs/STATE.md` → `docs/PORTING.md` |
+| Runova(WebAI駆動エージェンティックCLI/GUI) | `C:\Users\soich\PycharmProjects\Runova` | github.com/lowebbebb777/Runova | `AGENTS.md` → `docs/STATE.md` → `docs/EX_STREAM_DESIGN.md` |
+| Facefusionkai(特定人物適応型顔変換アダプタ) | `C:\AI\Facefusionkai` | github.com/lowebbebb777/Facefusionkai | `AGENTS.md` → `docs/STATE.md` → `release_gates.toml` |
+| RanovaCLI(RUNOVA CLI/GUI/Orchestra) | `C:\Users\soich\PycharmProjects\RanovaCLI` | github.com/lowebbebb777/RunovaCLI | `AGENTS.md` → `docs/STATE.md` → `docs/EX_STREAM_DESIGN.md` |
+| LLLM(小型ローカルLLM研究・DeltaFEM) | `C:\Users\soich\PycharmProjects\LLLM` | github.com/lowebbebb777/LLLM | `README.md` → `docs/STATE.md` → `deltafem/RESEARCH_PLAN.md` |
 
 | Ideas(RUNOVA Labs横断アイデア保管庫) | `(clone先未固定)` | github.com/lowebbebb777/Ideas | `README.md` → `docs/STATE.md` → `ideas/<slug>/IDEA.md` |
 
