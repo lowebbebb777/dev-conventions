@@ -1,9 +1,10 @@
 # STATE — 現在地 / Current Position
 
-<!-- 常に上書き。歴史を書かない(→ LOG.md)。長さの目安は1画面(50行)だが、
-     次走者が事故る情報を削るくらいなら超過してよい。上限より正確さが優先。
-     Always overwritten. No history here (→ LOG.md). Aim for one screen (~50 lines),
-     but exceed it rather than dropping something the next runner would trip over. -->
+<!-- 常に上書き。1画面(50行)以内(tests が落とす)。溢れたら削るのではなく移す:
+     歴史は LOG.md、今やらない案は IDEAS.md。毎回読まれるファイルに、たまにしか
+     要らないものを置くと全エージェントが毎セッション運搬費を払う。
+     Always overwritten; ≤50 lines (enforced by tests). On overflow, move rather than
+     delete: history to LOG.md, not-now ideas to IDEAS.md. -->
 
 最終更新 / Last updated: YYYY-MM-DD <エージェント名 / agent> @ <git HEAD 短縮ハッシュ / short hash>
 
@@ -33,6 +34,14 @@ Canonical list of remaining work: this file.
 
 1. <作業 / task> — 仕様: <文書 §節 / doc §section>
 2. ...
+
+## アイディア棚 / Idea Shelf
+
+<!-- この1行は消さない。棚の存在を次走者に必ず気づかせるための唯一の仕掛け。
+     Never delete this line: it is the only mechanism that makes the shelf discoverable. -->
+
+`docs/IDEAS.md`(N件 / N entries)— **着手前に関連語で grep**。通読しない /
+grep by keyword before starting; do not read it through.
 
 ## 未検証項目 / Unverified Items
 

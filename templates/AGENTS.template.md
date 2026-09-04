@@ -34,13 +34,20 @@ If the repo has no tests, say so and write the verification procedure used inste
 3. `docs/LOG.md` に**1エントリ追記** / Append one entry to `docs/LOG.md`.
 4. 検証を実行し、結果(何をどう確かめたか)を STATE と LOG に記録 /
    Run the verification; record in STATE and LOG what you checked and how.
+   **新しいテストは、修正前のコードで FAIL することを確認してから緑にする**(緑だけでは
+   何も検証していないテストと区別できない)/ Confirm each new test FAILS against the pre-fix
+   code before accepting green.
 5. repo の事実は必ず repo 内に置く(エージェント固有メモリだけに残さない) /
    Repo facts always live in the repo; never only in agent-private memory.
+6. 今やらない案が出たら `docs/IDEAS.md` に**詩**(散文でない1〜2文)を追記する。STATE には置かない /
+   Park ideas you won't implement now in `docs/IDEAS.md` as a poetic line or two — never in STATE.
 
 ## 運用の指針 / Operating Guidance
 
 すべて**既定値**であり、AIの判断で外してよい。外したら LOG に1行理由を書く /
 These are **defaults**, not walls. Deviate when it serves the task; note the reason in LOG.
+機械で判定できることは心がけでなく `tests/` に置く / Whatever can be checked mechanically
+belongs in `tests/`, not in good intentions — those checks are rules, not defaults.
 
 1. **報告は結論ファースト / Lead with the conclusion**:
    挨拶・前置き・自己弁護は書かない。ただし**行数上限は設けない** — 判断理由・
@@ -56,11 +63,13 @@ These are **defaults**, not walls. Deviate when it serves the task; note the rea
    補助的な JSON/メモはセッション内利用に留め commit しない。食い違ったら STATE が正 /
    Keep scratch state out of the repo; on conflict, STATE wins.
 4. **完了の判定 / Definition of done**:
-   - テストがある領域: 緑は**必要条件**。緑だから十分とは限らない /
-     Where tests exist, green is necessary but not sufficient.
-   - テストが無い領域(ドキュメント・UI・調査): 「どう確かめたか」を手順ごと
-     STATE の「検証済みの事実」に書けば完了としてよい /
-     Where they don't, writing the exact verification steps into STATE counts as done.
+   - 緑は**必要条件**。ただし **PASS だけでは根拠にならない** — 新しいテストは
+     **修正前のコードで FAIL することを確認**してから採用する /
+     Green is necessary but not sufficient: confirm each new test FAILS against the pre-fix code.
+   - テストを持てない領域(ドキュメント・調査): 「どう確かめたか」を手順ごと
+     STATE の「検証済みの事実」に書けば根拠になる。手順を書けないものは完了ではない /
+     Where tests cannot exist, the verification steps written into STATE are the evidence;
+     if you cannot write the steps, it is not done.
    - **緑になった瞬間にセッションを終える義務はない**。残作業を続けてよい /
      Green does not oblige you to stop; carry on with the remaining work.
 
@@ -91,5 +100,11 @@ When uncertain, proceed on a stated assumption recorded in STATE rather than hal
   「終了時の義務」に従う / read STATE.md and start from the top remaining task.
 - **dm = 引継ぎ保存**: 途中経過を `docs/STATE.md`(次の一手)と `docs/LOG.md` に書いて commit /
   checkpoint now before switching AI mid-task.
-- **di = 引継ぎ登録**: 新規repoを規約に登録(テンプレから AGENTS/STATE/LOG 作成 +
-  `dev-conventions/projects.md` に1行追加 + commit)/ onboard a new repo.
+- **di = 引継ぎ登録**: 新規repoを規約に登録(テンプレから AGENTS/STATE/LOG/IDEAS +
+  `tests/test_conventions.py` を作成 + `dev-conventions/projects.md` に1行追加 + commit)/
+  onboard a new repo.
+- **did = アイディアを棚に落とす**: 直前に出た案を、今いる repo の `docs/IDEAS.md` へ
+  **詩**(散文でない1〜2文)で追記。仕様も手順も書かない / park the idea just raised as a
+  poetic line or two — never prose, never in STATE.
+  横断的な着想を `lowebbebb777/Ideas` へ集約する場合は明示的に指示すること /
+  To deposit into the shared Ideas repo instead, say so explicitly.

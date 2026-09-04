@@ -12,7 +12,12 @@ AIが「どのプロジェクトを引き継ぐか」を選ぶための一覧。
 | SmartSleepManager(Sleep v3 / Android睡眠アプリ) | `C:\Users\soich\AndroidStudioProjects\SmartSleepManager` | github.com/lowebbebb777/SmartSleepManager | `CLAUDE.md` → `docs/STATE.md` → `docs/DESIGN_V3_1.md` |
 | SleepSoundSampler(音響エンジン) | `C:\Users\soich\PycharmProjects\SleepSoundSampler` | (要確認) | `docs/ma_engine_design.md` / `docs/comfort_tuning_options_design.md` → `docs/STATE.md` |
 | SleepSoundOne(Android自然音・Ma音響アプリ) | `C:\Users\soich\AndroidStudioProjects\SleepSoundOne` | github.com/lowebbebb777/SleepSoundOne | `docs/android_audio_pipeline.md` → `docs/STATE.md` |
-| CloudCodeEX(ストリーミングプロキシ) | `C:\Users\soich\PycharmProjects\CloudCodeEX` | (要確認) | `docs/EX_STREAM_DESIGN.md` / `docs/architecture-provider-split.md` → `docs/STATE.md` |
+| Runova(WebAI駆動エージェンティックCLI/GUI) | `C:\Users\soich\PycharmProjects\Runova` | (要確認) | `AGENTS.md` → `docs/STATE.md` → `docs/EX_STREAM_DESIGN.md` / `docs/architecture-provider-split.md` |
+
+| Ideas(RUNOVA Labs横断アイデア保管庫) | `(clone先未固定)` | github.com/lowebbebb777/Ideas | `README.md` → `docs/STATE.md` → `ideas/<slug>/IDEA.md` |
 
 <!-- 新規プロジェクトは1行追加するだけ。詳細は各repoのSTATE/LOGが持つ。
-     remote URLがあれば埋める(他マシン・クラウドAIからcloneできるように)。 -->
+     remote URLがあれば埋める(他マシン・クラウドAIからcloneできるように)。
+     ローカルに存在しないパスは行ごと削除する(tests/test_conventions.py が落とす)。
+     2026-08-02: CloudCodeEX はローカル実体が消滅していたため削除。設計文書は
+     Runova 側の docs/ に同名で存在する。 -->
