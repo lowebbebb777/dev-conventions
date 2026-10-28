@@ -1,50 +1,34 @@
 # STATE — 現在地 / Current Position
 
-最終更新 / Last updated: 2026-09-04 Claude Code @ a566051 (IDEAS棚に grep タグを導入)
+最終更新 / Last updated: 2026-10-28 ChatGPT (共通規約の単一正本化・作業ブランチ)
 
 ## 検証済みの事実
-
-- 文書整備 + AI_KEY (`F:\AI_KEY\`) 構造・テンプレ共通化 完了 (2026-07-25)
-- `projects.md` 登録完了: SleepSoundOne (2026-07-28) / Ideas + IDEA-001 (2026-08-02)
-- **4ファイル構成へ移行** (2026-08-02): `docs/IDEAS.md` 追加。分離基準はアクセス頻度(README §4ファイル構成)
-- **`tests/` 新設** (2026-08-02): `tests/test_conventions.py` — 逆検証4件が赤になることを確認済み
-- **規約の自由化** (2026-09-04): 「省トークン・TDD規約」→「運用の指針」(既定値・逸脱可)、
-  「自律範囲」節を新設。撤廃= 報告5行上限 / 丸読み禁止 / `.state.json` / 「完了=PASSのみ・即終了」。
-  逆検証(原則2)と50行上限は**維持**(機械テストが正)
-- **IDEAS棚に grep タグを導入** (2026-09-04): 詩は grep 語を削ぎ落とすため棚の取り出し口と
-  噛み合っていなかった。具体語タグ2語以上を必須化・既存11件へ付与し `IdeaShelf` で機械強制。
-  検証: `python -m unittest discover -s tests -p "test_*.py"` **8件 緑**、タグ剥がしで FAILED 確認
+- 2026-09-04時点: 4ファイル構成(AGENTS/STATE/LOG/IDEAS)、IDEAS grepタグ2件以上、STATE 50行上限のテストが既存。過去の詳細はLOG。
+- 2026-10-28: `AGENTS.md` を全AI共通の唯一の作業規約とし、`CLAUDE.md` を参照だけの互換入口とする文書・テンプレ・テストを作業ブランチへ記録。
+- `README.md` に既存repo向け安全な移行順、`global-pointer.md` に全AI共通の同一案内文を記載。
+- GitHubから変更ファイルを読み戻して内容・参照関係を確認（Windows上の実行テストではない）。
 
 ## ドキュメントの優先順位
-
-矛盾時: `README.md` > `global-pointer.md` > `docs/STATE.md`
+- 全AI共通の作業規約: `AGENTS.md`。背景・導入方針: `README.md`。
+- 現在地・残作業: **本 `docs/STATE.md` が唯一の正**。履歴: `docs/LOG.md`。
+- `CLAUDE.md` / `global-pointer.md` は案内用。独立した規約を置かない。
 
 ## 置いた仮定
-
-- 行数上限は緩めず維持 — 根拠: 溢れ先(`IDEAS.md`)と実測(4件中2件超過・最大250行)があり、
-  「上限が情報を削らせる」懸念は解消済みと判断
+- AIごとの自動読込ファイル名は互換のため残すが、行動規則は一本化する。各ツールのグローバル設定は勝手に変えない。
 
 ## アイディア棚
-
-`docs/IDEAS.md`(12件)— **着手前に関連語で grep**。通読しない
+`docs/IDEAS.md`（12件、既存）— 着手前に関連語でgrep。通読しない。
 
 ## 残作業(優先順)
-
-1. **`global-pointer.md` の再貼り付け** — `did` / `IDEAS` / 「自律範囲」を各AIのグローバル設定へ
-   反映(`~/.claude/CLAUDE.md` 他)。**ユーザー作業**
-2. **Runova への規約適用** — `docs/IDEAS.md` 新設 + STATE 250行→50行 + テストテンプレ導入
-3. **SleepSoundOne の STATE 65行を50行以下へ**
-4. **SleepSoundSampler の `AGENTS.md`** に旧「省トークン・TDD規約」が残存。新テンプレへ追従
-5. 新規プロジェクト作成時のプロンプト・CLI自動生成ツールの検討
-6. AI_KEY ドングル自動同期スクリプトの強化
+1. このブランチで `python -m unittest discover -s tests -p "test_*.py"` を実行し、元の8件と追加3件、テンプレの回帰を確認する（現会話のGitHub接続では実行不可）。
+2. 規約統一の内容をユーザーがレビュー後、mainへの取り込みを判断する（未マージ）。
+3. 既存repoの `CLAUDE.md` 独自記載を棚卸し、AGENTSへ統合してからポインターにする。SleepSM等への変更は個別に実施し、勝手に上書きしない。
+4. 各AIのグローバル設定を新しい `global-pointer.md` へ必要に応じ更新（ユーザー操作が必要）。
+5. 既存残件: Runova規約適用、SleepSoundOne STATE行数、SleepSoundSampler旧規約、新規repo導入補助、AI_KEYドングル強化。
 
 ## 未検証項目
-
-- **SmartSleepManager に `docs/STATE.md` が無い**。`projects.md` は指すが実体が無く `ds` が空振る
-- **Ideas repo はローカル未clone**。到達性は remote 有りで通しているが中身は未検証
-- 新「自律範囲」が各AIで意図通り効くかは未検証。確認の多寡が出たら境界を調整する
-- タグ語が「次走者が打つ語」を当てているかは、棚が50件規模になるまで判定できない
+- Python unittestの実行結果と既存repoにおけるAIの読み込み挙動。
+- 旧来の未検証: SmartSleepManagerのSTATE不在、Ideas未clone、一部規約の実際の遵守、IDEASタグの有効性。
 
 ## 着手禁止
-
-- なし
+- 既存プロジェクトのAGENTS/CLAUDEを、内容移管・安全確認なしに一括置換しない。
