@@ -177,3 +177,12 @@
 - 申し送り / Notes for next runner:
   - `did` は**今いる repo の `docs/IDEAS.md`** へ詩で落とす。Ideas repo は明示指示時のみ。
   - `global-pointer.md` の再貼り付けはユーザー作業。未反映だと他エージェントに伝わらない。
+
+---
+
+## 2026-10-28 ChatGPT — 全AIの規約正本をAGENTS.mdへ統一
+
+- やったこと / Done: 全AIの規約を`AGENTS.md`一つに統一し、`CLAUDE.md`は読み込み互換のポインターのみとした。`README.md`の旧「CLAUDE側が正でもよい」「Claude固有事項」の例外を廃止。グローバル案内`global-pointer.md`も全AI共通に更新。配布用`templates/AGENTS.template.md`、`templates/CLAUDE.template.md`、機械テスト2種を更新・追加した。
+- 逸脱・追加・スキップ / Deviations, additions, skips: 追加 — 既存の各repoを破壊的に書き換えないため、必要な独自指示を先に`AGENTS.md`へ移管する移行手順を記した。スキップ — 他repoの一括変更とmainへのマージ。今回は文書/テストの設計整備で、実機の振る舞いや外部アプリ設定は未変更。
+- 検証 / Verification: GitHubで変更ファイル・SHAを読み戻し、参照の単一化を静的照合。Python unittest/逆検証はGitHub接続のみの会話環境では**未実行**。完了の証拠にしない。
+- 申し送り / Notes for next runner: 作業ブランチ`refactor/one-canonical-agent-rulebook-20261028`。テストを実行してからレビュー・main取り込みを判断すること。特にSleepSMの既存`CLAUDE.md`には製品固有の思想があるため、削除・ポインター化前に必ず仕様書へ移す。ChatGPT / Claude / Codex / Antigravity / gbmcの優先規約を分けない。
