@@ -1,10 +1,12 @@
 # AGENTS.md — <プロジェクト名 / Project Name> エージェント共通ルール / Common Agent Rules
 
-全エージェント(Codex / Antigravity / Claude Code / Cursor)共通の入口 / Common entry point for all agents.
-**このファイルには「今やること」を書かない**(陳腐化するため)。現在地は `docs/STATE.md` / **Never write "current tasks" here** (it goes stale). Current position lives in `docs/STATE.md`.
+**すべてのAI（ChatGPT / Claude Code / Codex / Antigravity / Cursor / gbmc 等）に共通する唯一の規約正本**。AI固有の判断・承認・完了条件を作らない / **One canonical rulebook for all agents**. No agent-specific requirements, permissions or done criteria.
+`CLAUDE.md` は参照専用の互換入口（`templates/CLAUDE.template.md` から作成）。規則を追加しない / `CLAUDE.md` is only a compatibility pointer to this file.
+**このファイルには「今やること」を書かない**(陳腐化するため)。現在地は `docs/STATE.md` / **Never write "current tasks" here**; current position lives in `docs/STATE.md`.
 
 ## 読む順番 / Reading Order
 
+0. `AGENTS.md` — 全AI共通ルールの唯一の正 / sole canonical agent rules; `CLAUDE.md` is only a pointer
 1. <思想・不変条件の正典 / canonical doc for philosophy & invariants> — 最優先 / highest priority
 2. `docs/STATE.md` — 現在地と残作業 / current position and remaining work
 3. <設計文書 / design docs> — 仕様の正。矛盾時の優先順: <A> > <B> / spec canon; precedence on conflict
@@ -41,6 +43,14 @@ If the repo has no tests, say so and write the verification procedure used inste
    Repo facts always live in the repo; never only in agent-private memory.
 6. 今やらない案が出たら `docs/IDEAS.md` に**詩**(散文でない1〜2文)を追記する。STATE には置かない /
    Park ideas you won't implement now in `docs/IDEAS.md` as a poetic line or two — never in STATE.
+
+## AI非依存の目的管理と失敗時判断 / Goal-first Operation
+
+1. 目的と手段を区別する。受入条件を満たした証拠が得られなければ完了と報告しない / Keep goals distinct from tools; verify acceptance evidence before claiming completion.
+2. 利用可能なツールと実行環境を実測する。PowerShell・WSL・クラウドの認証が同一とは限らない / Probe tools and the actual execution context; never assume credentials cross boundaries.
+3. 確定的な認証・権限エラーを繰り返さず、承認済みの代替経路を検討。拒否や権限制限を迂回しない / Do not retry definitive authorization failures; seek approved alternatives, not bypasses.
+4. 失敗履歴・進捗・承認範囲を引継ぎ、ユーザーへ同じ質問を繰り返さない / Carry evidence, retries, scope and approvals across agents.
+5. AI名が変わっても全ルール・作業範囲・終了条件は同じ / All agents share the same rules, scope and completion criteria.
 
 ## 運用の指針 / Operating Guidance
 
