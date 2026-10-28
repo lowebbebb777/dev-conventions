@@ -1,12 +1,13 @@
 # グローバルポインタ(各ツールの全セッション設定に貼る文面)/ Global Pointer Text
 
-各AIツールのグローバル設定に貼るのは以下の文面のみ。規約本体を貼らない。
-Paste only the text below into each AI tool's global settings. Never paste the convention body.
+各AIツールのグローバル設定に貼るのは、下記の **同一の案内文** のみ。アプリ別の行動規則や規約本体を貼らない。
+Paste the **same neutral pointer text** into any agent's global setup. No agent-specific rules.
 
-配置先 / Where to paste:
+設定先の例（あくまで読込方式の差であり、ルール差ではない）/ Example locations (loading mechanism only):
 - Claude Code: `~/.claude/CLAUDE.md`
 - Codex: `~/.codex/AGENTS.md`
-- Antigravity / Cursor: 各アプリ設定画面の Global Rules / User Rules(UIから登録)
+- Antigravity / Cursor: 各アプリの Global Rules / User Rules
+- これらの設定はユーザーが導入・変更する。GitHubを更新しても各アプリの設定は自動変更されない。
 
 ---
 
@@ -14,10 +15,10 @@ Paste only the text below into each AI tool's global settings. Never paste the c
 # マルチエージェント引き継ぎ規約(全プロジェクト共通)/ Multi-Agent Handoff Convention
 
 - 原本 / Source: `C:\Users\soich\dev-conventions\`(GitHub: lowebbebb777/dev-conventions)
-- リポジトリに `AGENTS.md` / `docs/STATE.md` がある場合: それが正。作業開始時は
-  `docs/STATE.md` を最初に読み、終了時はリポジトリの `AGENTS.md` の「終了時の義務」に必ず従う。
-  If the repo has `AGENTS.md` / `docs/STATE.md`, they are canonical: read `docs/STATE.md`
-  first, and always follow the repo AGENTS.md "End-of-Session Duties" before finishing.
+- リポジトリに `AGENTS.md` がある場合、それが**全AI共通ルールの唯一の正本**。最初に `AGENTS.md`、次に `docs/STATE.md` と仕様書を読む。終了時は `AGENTS.md` の「終了時の義務」に従う。
+  If AGENTS.md exists, it is the sole shared rulebook. Read AGENTS first, then STATE and specs. Never rely on independent model-specific directions.
+- `CLAUDE.md` は `AGENTS.md` への互換ポインターのみ。独自規約を追加しない。既存repoの独自記載は、必要事項を AGENTS に移してから置換する。
+  CLAUDE.md is a pointer only. Migrate any unique existing requirements before replacing it.
 - 無いリポジトリで開発を始める場合: dev-conventions のテンプレートからの導入を
   ユーザーに提案する(勝手に導入しない)。
   In repos without them, propose adopting the templates from dev-conventions; do not
