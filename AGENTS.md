@@ -24,7 +24,7 @@ python -m unittest discover -s tests -p "test_*.py"
 
 ## 不変条件
 
-正は `README.md` および `global-pointer.md`。
+全AIの運用規約の正は **この `AGENTS.md`**。背景・分離方針は `README.md`。`global-pointer.md` は案内文の配布元であり、別の規約正本ではない。
 
 ## 終了時の義務
 
