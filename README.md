@@ -75,14 +75,7 @@ every agent, every session.
    Copy to repo root as `AGENTS.md` and fill in the blanks
 2. `templates/docs/STATE.template.md` → `docs/STATE.md` / `templates/docs/LOG.template.md` → `docs/LOG.md`
    / `templates/docs/IDEAS.template.md` → `docs/IDEAS.md`
-3. `CLAUDE.md` は薄いラッパにする: 「まず `AGENTS.md` を読むこと」+ Claude 固有事項のみ
-   Make `CLAUDE.md` a thin wrapper: "Read `AGENTS.md` first" + Claude-specific notes only
-   (Codex/Antigravity は `AGENTS.md` を、Claude Code は `CLAUDE.md` をネイティブに読むため、
-   正典は1つにし他方をポインタにする /
-   Codex/Antigravity natively read `AGENTS.md`, Claude Code reads `CLAUDE.md`;
-   keep one canonical file and make the other a pointer)
-
-既存プロジェクトでは、確立済みの正典(例: `CLAUDE.md` が正)を無理に入れ替えない。
-ポインタの向きを逆にするだけでよい。
-In existing projects, don't force-swap an established canon (e.g., `CLAUDE.md` as source of
-truth); just reverse the direction of the pointer.
+3. 全エージェント共通の入口として `AGENTS.md` に一本化する。個別ツール用の `CLAUDE.md` 等は作成せず、
+   既存の `CLAUDE.md` は最新Headから削除して内容を `AGENTS.md` に統合する /
+   Unify on `AGENTS.md` as the common entry point for all agents. Do not create tool-specific
+   files like `CLAUDE.md`; delete existing `CLAUDE.md` files from latest Head and integrate their contents into `AGENTS.md`.

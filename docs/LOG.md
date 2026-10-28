@@ -2,6 +2,32 @@
 
 ---
 
+## 2026-10-28 Antigravity — CLAUDE.mdの全Head削除と全AI用(AGENTS.md)への完全統合
+
+- やったこと / Done:
+  - ユーザー指示「CLAUDE.mdはすべての最新Headから削除すること（最新dev-conの規約に従う）」および「Claude用⇒全AI用に統合」に基づき、全リポジトリおよび規約本体を更新・検証。
+  - `dev-conventions`:
+    - `README.md`: 「CLAUDE.mdは作成せず、全エージェント共通の入口としてAGENTS.mdに一本化する。既存のCLAUDE.mdは最新Headから削除しAGENTS.mdへ統合する」に改定。
+    - `projects.md`: `sleepsm` の正典を `AGENTS.md → docs/STATE.md → docs/DESIGN_V3_1.md` に更新。`SleepSoundSampler` のローカル実体パス `C:\Users\soich\PycharmProjects\Sleep-Audio-AI` を反映。
+  - `sleepsm` (`C:\Users\soich\AndroidStudioProjects\sleepsm`):
+    - `CLAUDE.md` を git rm で完全削除。
+    - `CLAUDE.md` に記載されていた思想・設計ドキュメント・不変条件・主要ファイルをすべて `AGENTS.md` に統合し、正典を一本化。
+    - `docs/STATE.md` / `docs/LOG.md` 更新、コミット完了。
+  - `Sleep-Audio-AI` (`C:\Users\soich\PycharmProjects\Sleep-Audio-AI`):
+    - 旧「省トークン規約」から最新の「運用の指針」「自律範囲」へ `AGENTS.md` を更新。
+    - `docs/IDEAS.md` (grepタグ付きアイディア棚)新設、`tests/test_conventions.py` 配備。
+    - `docs/STATE.md` (棚ポインタ・最終更新日) / `docs/LOG.md` 更新、コミット完了。
+  - 全リポジトリ一斉検証:
+    - `dev-conventions`, `sleepsm`, `Sleep-Audio-AI`, `SleepSoundOne`, `Runova`, `Facefusionkai`, `RanovaCLI`, `LLLM` の全8リポジトリにおいて `CLAUDE.md` が存在しないこと、および `test_conventions.py` が緑であることを自動スクリプトで確認完了。
+- 逸脱・追加・スキップ / Deviations, additions, skips: なし。
+- 検証 / Verification:
+  - `python -m unittest discover -s tests -p "test_*.py"` — **8件 緑**。
+  - 逆検証: `projects.md` に不正パスを混入させて `test_every_entry_is_reachable` が赤になることを確認し、復元して緑に戻した。
+- 申し送り / Notes for next runner:
+  - 各AIツールのグローバル設定(`~/.claude/CLAUDE.md`等)には `global-pointer.md` の文面を貼る（ユーザー作業）。リポジトリ内には `CLAUDE.md` は置かず `AGENTS.md` を正とする。
+
+---
+
 ## 2026-09-04 Claude Code (Opus 5) — IDEAS棚の取り出し口
 
 - やったこと / Done: アイディア棚の retrieval を修正。棚の使い方は「着手前に関連語で grep、
