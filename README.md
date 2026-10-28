@@ -1,7 +1,7 @@
 # dev-conventions — マルチエージェント引き継ぎ規約 / Multi-Agent Handoff Convention
 
-複数のAIエージェント(Claude Code / Codex / Antigravity / Cursor 等)と人間がリレーで
-開発するリポジトリのための共通規約。
+複数のAIエージェント(ChatGPT / Claude Code / Codex / Antigravity / Cursor / gbmc 等)と人間がリレーで
+開発するリポジトリのための、**AIに依存しない単一正本の共通規約**。
 A shared convention for repositories developed in relay by multiple AI agents
 (Claude Code / Codex / Antigravity / Cursor, etc.) and humans.
 
@@ -11,6 +11,20 @@ A shared convention for repositories developed in relay by multiple AI agents
 黙った逸脱と文書の陳腐化による事故をなくすこと。
 Keep the repo in a state where the next runner can locate the current position by
 **verifying, not reading**. Eliminate accidents caused by silent deviations and stale docs.
+
+## 唯一の規約正本 / Single Source of Rules
+
+**各repoの `AGENTS.md` が共通規約の唯一の正本。** すべてのAIに同じ目的理解・承認範囲・終了条件を適用する。AIごとに「Claude用の指示」「Codex用の規則」を分けて管理しない。各製品の仕様書は `AGENTS.md` から参照する。
+
+`CLAUDE.md` は読み込み互換のため残してよいが、**中身は `AGENTS.md` への案内のみ**（`templates/CLAUDE.template.md`）。技術的に自動読込するファイル名が異なることは、ルールを分ける理由にはならない。二つの内容を手動で同期・複製する方式も避ける。
+
+- **規約**: `AGENTS.md`（全AI共通）
+- **現状**: `docs/STATE.md`（現在地・残作業）
+- **履歴**: `docs/LOG.md`（実施・検証・逸脱）
+- **アイデア**: `docs/IDEAS.md`（将来案）
+- **互換入口**: `CLAUDE.md`（規約ではなく `AGENTS.md` のポインター）
+
+`AGENTS.md` が利用できない実行環境では、利用者に制約を示してからリポジトリ内の同じ規約を読み込む。規約を理解できないまま、異なる「AI向け既定ルール」を勝手に適用しない。
 
 ## 4ファイル構成 / The Four Files
 
@@ -75,14 +89,20 @@ every agent, every session.
    Copy to repo root as `AGENTS.md` and fill in the blanks
 2. `templates/docs/STATE.template.md` → `docs/STATE.md` / `templates/docs/LOG.template.md` → `docs/LOG.md`
    / `templates/docs/IDEAS.template.md` → `docs/IDEAS.md`
-3. `CLAUDE.md` は薄いラッパにする: 「まず `AGENTS.md` を読むこと」+ Claude 固有事項のみ
-   Make `CLAUDE.md` a thin wrapper: "Read `AGENTS.md` first" + Claude-specific notes only
-   (Codex/Antigravity は `AGENTS.md` を、Claude Code は `CLAUDE.md` をネイティブに読むため、
-   正典は1つにし他方をポインタにする /
-   Codex/Antigravity natively read `AGENTS.md`, Claude Code reads `CLAUDE.md`;
-   keep one canonical file and make the other a pointer)
+3. `templates/CLAUDE.template.md` をリポジトリ直下の `CLAUDE.md` として配置。
+   **追加のClaude固有ルールは禁止。** 参照する `AGENTS.md` が唯一の規約である。
+   Copy the neutral compatibility pointer; never put agent-specific directives in it.
+4. `templates/tests/test_conventions.template.py` を `tests/test_conventions.py` として配置し、
+   STATE行数・必須ファイル・CLAUDEからAGENTSへの参照をテストする（既存のテストは上書きしない）。
 
-既存プロジェクトでは、確立済みの正典(例: `CLAUDE.md` が正)を無理に入れ替えない。
-ポインタの向きを逆にするだけでよい。
-In existing projects, don't force-swap an established canon (e.g., `CLAUDE.md` as source of
-truth); just reverse the direction of the pointer.
+### 既存プロジェクトの移行 / Migration (preserve existing instructions)
+
+1. 既存 `AGENTS.md` と `CLAUDE.md` を両方読み、独自の指示・製品仕様・権限・安全条件を一覧化する。自動削除しない。
+2. 矛盾する内容は安全な側を暫定維持し、ユーザーの判断を要するものを明記する。合意した全AI共通の運用指示を `AGENTS.md` に統合する。長い製品仕様は別の設計書に置き、AGENTSから参照する。
+3. `CLAUDE.md` をポインターのみへ置換する。必要に応じてリネーム前の原文を履歴から追えるようコミットを分離する。**旧CLAUDE内容を移す前に置換しない。**
+4. `docs/STATE.md` と `docs/LOG.md` に移行と未確認事項を記載し、検証後にコミットする。対象外repoへの反映は別作業とする。
+5. `global-pointer.md` の文面は各AIの設定へ必要な場合に配置するが、それ自体を規約の第二正本にしない。
+
+> 例: SleepSMなど、現在 `CLAUDE.md` を製品思想の正本としている既存repoは、
+> 原文を保持して仕様書へ移管し、`AGENTS.md` に正しい参照順を書いてから移行する。
+> このdev-conventions変更だけで別repoの規約を上書きしない。
