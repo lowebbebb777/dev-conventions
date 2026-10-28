@@ -46,12 +46,14 @@ def parse_shelf(ideas_md: str) -> list[tuple[str, list[str]]]:
 REQUIRED_FILES = [
     "README.md",
     "AGENTS.md",
+    "CLAUDE.md",
     "global-pointer.md",
     "projects.md",
     "docs/STATE.md",
     "docs/LOG.md",
     "docs/IDEAS.md",
     "templates/AGENTS.template.md",
+    "templates/CLAUDE.template.md",
     "templates/docs/STATE.template.md",
     "templates/docs/LOG.template.md",
     "templates/docs/IDEAS.template.md",
@@ -163,6 +165,30 @@ class Templates(unittest.TestCase):
     def test_agents_template_mentions_negative_verification(self):
         """緑だけを根拠にさせない (README 原則2)。"""
         self.assertIn("FAIL", _read("templates/AGENTS.template.md"))
+
+
+class SingleCanonicalRulebook(unittest.TestCase):
+    """全AIで唯一の正本を共有し、入口ファイルが二重管理にならないこと。"""
+
+    def test_compat_pointer_matches_template(self):
+        self.assertEqual(
+            _read("templates/CLAUDE.template.md"),
+            _read("CLAUDE.md"),
+            "CLAUDE.mdに個別ルールを追加せず、配布用ポインターと同一に保つ",
+        )
+
+    def test_compat_pointer_is_not_second_rulebook(self):
+        pointer = _read("CLAUDE.md")
+        self.assertIn("AGENTS.md", pointer)
+        self.assertIn("独自のAI向け規則を追加しません", pointer)
+        self.assertLessEqual(len(pointer.splitlines()), 12, "CLAUDE.mdを別の規約書にしない")
+        self.assertEqual(0, pointer.count("\n## "), "ポインターに独自の規約セクションを作らない")
+
+    def test_shared_rulebook_declares_single_canon(self):
+        self.assertIn("唯一の共通規約", _read("AGENTS.md"))
+        self.assertIn("唯一の規約正本", _read("README.md"))
+        self.assertIn("共通", _read("templates/AGENTS.template.md"))
+        self.assertIn("同一の案内文", _read("global-pointer.md"))
 
 
 if __name__ == "__main__":
