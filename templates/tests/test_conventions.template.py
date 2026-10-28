@@ -53,9 +53,17 @@ def _read(rel: str) -> str:
 
 class HandoffConvention(unittest.TestCase):
     def test_required_files_present(self):
-        required = ["AGENTS.md", "docs/STATE.md", "docs/LOG.md", "docs/IDEAS.md"]
+        required = ["AGENTS.md", "CLAUDE.md", "docs/STATE.md", "docs/LOG.md", "docs/IDEAS.md"]
         missing = [p for p in required if not (ROOT / p).is_file()]
         self.assertEqual([], missing, f"引き継ぎ規約の必須ファイルが欠けている: {missing}")
+
+    def test_one_rulebook_with_compat_pointer(self):
+        """CLI名やAI名が違っても、同じAGENTSを読むこと。"""
+        canonical = _read("AGENTS.md")
+        pointer = _read("CLAUDE.md")
+        self.assertIn("AGENTS.md", pointer)
+        self.assertIn("唯一", canonical)
+        self.assertLessEqual(len(pointer.splitlines()), 12, "互換入口を第二のルール正本にしない")
 
     def test_state_within_line_cap(self):
         """STATE は現在地であって履歴ではない (原則4)。"""
