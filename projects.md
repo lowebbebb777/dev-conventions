@@ -16,6 +16,7 @@ AIが「どのプロジェクトを引き継ぐか」を選ぶための一覧。
 | Facefusionkai(特定人物適応型顔変換アダプタ) | `C:\AI\Facefusionkai` | github.com/lowebbebb777/Facefusionkai | `AGENTS.md` → `docs/STATE.md` → `release_gates.toml` |
 | RanovaCLI(RUNOVA CLI/GUI/Orchestra) | `C:\Users\soich\PycharmProjects\RanovaCLI` | github.com/lowebbebb777/RunovaCLI | `AGENTS.md` → `docs/STATE.md` → `docs/EX_STREAM_DESIGN.md` |
 | LLLM(小型ローカルLLM研究・DeltaFEM) | `C:\Users\soich\PycharmProjects\LLLM` | github.com/lowebbebb777/LLLM | `README.md` → `docs/STATE.md` → `deltafem/RESEARCH_PLAN.md` |
+| gbmc(GBMesh Code・ローカルLLMコーディングエージェント) | `C:\Users\soich\PycharmProjects\gbmesh-code` | github.com/lowebbebb777/gbmesh-code | `AGENTS.md` → `docs/STATE.md` → `docs/UX_RELIABILITY/README.md` |
 
 | Ideas(RUNOVA Labs横断アイデア保管庫) | `(clone先未固定)` | github.com/lowebbebb777/Ideas | `README.md` → `docs/STATE.md` → `ideas/<slug>/IDEA.md` |
 
