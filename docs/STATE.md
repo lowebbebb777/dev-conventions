@@ -1,8 +1,9 @@
 # STATE — 現在地 / Current Position
 
-最終更新 / Last updated: 2026-10-29 dconちゃん (Dynamic Role Assignment main反映・実運用検証中)
+最終更新 / Last updated: 2026-10-30 dconちゃん (did 原文＋詩文に改定)
 
 ## 検証済みの事実
+- 2026-10-30: didを発言者付き原文（逐語）＋詩文＋タグへ明示改定。静的整合確認済み、実clone回帰・独立レビューは NOT_RUN。
 
 - 2026-10-29: ユーザー承認の Dynamic Role Assignment 8原則を思想正本第13節と AGENTS 実行規則へ追加。対象節の静的整合確認済み。実clone回帰・独立レビューは NOT_RUN。
 - 4ファイル構成 + 機械テスト + 規約自由化 + IDEAS棚grepタグ必須化 (2026-09-04)

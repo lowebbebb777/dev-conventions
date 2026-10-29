@@ -52,8 +52,8 @@ If the repo has no tests, say so and write the verification procedure used inste
    code before accepting green.
 5. repo の事実は必ず repo 内に置く(エージェント固有メモリだけに残さない) /
    Repo facts always live in the repo; never only in agent-private memory.
-6. 今やらない案が出たら `docs/IDEAS.md` に**詩**(散文でない1〜2文)を追記する。STATE には置かない /
-   Park ideas you won't implement now in `docs/IDEAS.md` as a poetic line or two — never in STATE.
+6. 今やらない案は `docs/IDEAS.md` に**原文（逐語）＋詩文（1〜2文）＋具体タグ2語以上**を保存。STATEには置かない /
+   Preserve attributed verbatim source, poetic rendering and searchable tags.
 
 ## 運用の指針 / Operating Guidance
 
@@ -119,8 +119,6 @@ Only minor, reversible implementation details may proceed on documented assumpti
 - **di = 引継ぎ登録**: 新規repoを規約に登録(テンプレから AGENTS/STATE/LOG/IDEAS +
   `tests/test_conventions.py` を作成 + `dev-conventions/projects.md` に1行追加 + commit)/
   onboard a new repo.
-- **did = アイディアを棚に落とす**: 直前に出た案を、今いる repo の `docs/IDEAS.md` へ
-  **詩**(散文でない1〜2文)で追記。仕様も手順も書かない / park the idea just raised as a
-  poetic line or two — never prose, never in STATE.
-  横断的な着想を `lowebbebb777/Ideas` へ集約する場合は明示的に指示すること /
-  To deposit into the shared Ideas repo instead, say so explicitly.
+- **did = アイディアを棚に落とす**: 今いるrepoの `docs/IDEAS.md` に原文（発言者・逐語）＋詩文（1〜2文）＋具体タグ2語以上を登録。原文を意訳せず、AI発言とユーザー発言を区別する。
+  Keep the verbatim source and poem distinct; keep specs, tasks and progress out of IDEAS.
+  横断アイデアを `lowebbebb777/Ideas` に集約するときは同repoのAGENTSに従う。

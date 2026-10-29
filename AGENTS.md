@@ -54,7 +54,7 @@ python -m unittest discover -s tests -p "test_*.py"
 3. `docs/LOG.md` に**1エントリ追記**。
 4. `python -m unittest discover -s tests -p "test_*.py"` が緑であること(逆検証込み)。
 5. repo の事実は必ず repo 内に置く(エージェント固有メモリだけに残さない)。
-6. 今やらない案は `docs/IDEAS.md` に**詩**(散文でない1〜2文)。STATE には置かない。
+6. 今やらない案は `docs/IDEAS.md` に**発言者付き原文（逐語）＋詩文（1〜2文）＋具体タグ2語以上**で保存する。STATE には置かない。
 
 ## 運用の指針
 
@@ -102,6 +102,6 @@ python -m unittest discover -s tests -p "test_*.py"
 - **ds = 引継ぎする**: `docs/STATE.md` を読んで「残作業」の最上位から着手。区切りでは上記「終了時の義務」に従う。
 - **dm = 引継ぎ保存**: 今の途中経過を `docs/STATE.md`(現在地・次の一手)と `docs/LOG.md` に書いて commit。タスク途中で別AIへ渡す前の強制セーブ。
 - **di = 引継ぎ登録**: 新規repoを規約に登録する合言葉。
-- **did = アイディアを棚に落とす**: 直前に出た案を、今いる repo の `docs/IDEAS.md` へ
-  **詩**(散文でない1〜2文)で追記する。仕様も手順も書かない。STATE には置かない。
-  横断的な着想を `lowebbebb777/Ideas` へ集約したい場合は、その旨を明示して指示すること。
+- **did = アイディアを棚に落とす**: 今いるrepoの `docs/IDEAS.md` に**原文（発言者・逐語引用）＋詩文（1〜2文）＋具体タグ2語以上**を登録。原文は改変・意訳しない。AI文をユーザー発言として記載しない。詩文は意味を保つ解釈であり原文に優先しない。
+  仕様・手順・進捗はIDEASに置かない。過去の詩だけの履歴は消さず、原文が確認できるときだけ追補する。
+  横断的な着想を `lowebbebb777/Ideas` に集約するときは同repoの `AGENTS.md` に従う。

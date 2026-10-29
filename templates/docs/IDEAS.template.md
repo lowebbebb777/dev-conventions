@@ -5,10 +5,11 @@
      Append-only. Home for what belongs to neither STATE (current position) nor
      LOG (history): things worth recalling occasionally. NOT read every session. -->
 
-## 1件 = 詩 / One Entry = A Poem
+## 1件 = 原文 + 詩文 + タグ / One Entry = Verbatim + Poem + Tags
 
-アイディアは**詩だけ**を残す。仕様も手順も書かない。
-Keep only the poem. No specs, no steps.
+**発言者を明記した原文（逐語）と詩文**を別々に残す。仕様と手順は記録しない。
+Keep attributed verbatim text and a distinct poetic rendering. No specs or steps.
+原文不明なら「原文未確認」と記し、発言を創作しない。
 
 **基準は長さではなく「散文でないこと」**。1文でも2文でもよい。
 The test is not length but *not-prose*. One sentence or two, either is fine.
@@ -29,9 +30,9 @@ The test is not length but *not-prose*. One sentence or two, either is fine.
 
 ### 書き方 / Rules
 
-- **散文にしない。1〜2文**。**説明を足したくなった時点で、それはアイディアではなく作業**
+- **詩文は散文にしない。1〜2文**。逐語の原文は散文でもよい。**説明を足したくなった時点で、それはアイディアではなく作業**
   (→ `docs/STATE.md`)。これが棚と現在地の境界。詩に畳むのではなく、
-  **詩が原形で、仕様書のほうが展開された劣化版**
+  **詩文は連想のための圧縮表現であり、原文そのものに優先しない**
   Never prose; one or two lines. The moment you want to *explain* it, it is a task, not an
   idea (→ STATE). The line is not a compression of the idea; the spec is an expansion of it.
 - **意味不明にしない**。復元できない詩は、復号器を持たない符号と同じで無価値。
@@ -54,7 +55,8 @@ The test is not length but *not-prose*. One sentence or two, either is fine.
 
 表は使わない(2文が折り返して読めなくなる)。1件1項目 / No tables — two-line poems wrap badly.
 
-- <詩> — `YYYY-MM-DD` <状態> — `<タグ>` `<タグ>` ...
+- **詩文**: <詩> — `YYYY-MM-DD` <状態> — `<タグ>` `<タグ>` ...
+  - **原文**（<発言者>・逐語）: 「<引用した正確な文章>」
 
 状態 / status: `未着手` / `→ 着手` / `採用済` / `却下`
 
