@@ -5,7 +5,8 @@
 
 ## 読む順番 / Reading Order
 
-1. <思想・不変条件の正典 / canonical doc for philosophy & invariants> — 最優先 / highest priority
+1. [共通開発思想](https://github.com/lowebbebb777/dev-conventions/blob/main/docs/DEVELOPMENT_PHILOSOPHY.md) — 役割・権限の原則。モデル名では権限が決まらない / Common role-based authority canon
+   （本リポジトリの承認済み設計正典: <設計文書 / approved project design canon>）
 2. `docs/STATE.md` — 現在地と残作業 / current position and remaining work
 3. <設計文書 / design docs> — 仕様の正。矛盾時の優先順: <A> > <B> / spec canon; precedence on conflict
 4. `docs/LOG.md` — 経緯と判断理由(必要時のみ遡る) / history and rationale (consult as needed)
@@ -22,7 +23,19 @@ If the repo has no tests, say so and write the verification procedure used inste
 
 ## 不変条件 / Invariants
 
-正は <正典ファイル> / Canon: <canonical file>.
+権限の共通正本は `dev-conventions/docs/DEVELOPMENT_PHILOSOPHY.md`。
+製品固有の正は <正典ファイル> / Canon: <canonical file>.
+
+## 役割と権限の境界 / Roles & Authority (non-optional)
+
+- **ユーザー / User**: 役割の任命・変更・取消し、要求・設計変更・最終受入の承認者。
+- **設計担当AI / Design AI**: ユーザーが**明示的に**委任した範囲だけで企画・要求・設計を担当。
+- **実装担当AI / Implementer AI**: 確定した要求・設計仕様の実装と検証。技術的な実装裁量は設計権限ではない。
+- **独立レビュー担当 / Independent reviewer**: 契約と証拠の照合。最終承認を代行しない。
+- AIモデル名・性能・製品名から権限を推定しない。**仕様変更、受入基準変更、範囲拡大、権限変更は事前承認**。
+- 設計の穴・矛盾は影響、選択肢、推奨案を LOG に報告し、承認前に仕様を変えない。
+- 優先順位: ユーザーの明示指示・承認済み実装契約 > 共通権限原則 > 製品固有規約の範囲内の実装裁量。
+  LOG の事後報告や STATE への仮定記載は承認に代わらない。
 
 ## 終了時の義務 / End-of-Session Duties
 
@@ -44,8 +57,9 @@ If the repo has no tests, say so and write the verification procedure used inste
 
 ## 運用の指針 / Operating Guidance
 
-すべて**既定値**であり、AIの判断で外してよい。外したら LOG に1行理由を書く /
-These are **defaults**, not walls. Deviate when it serves the task; note the reason in LOG.
+以下の報告・探索方法だけが**既定値**。委任範囲内で外したら LOG に理由を書く /
+Only reporting and exploration guidance is a default; note deviations in LOG.
+**役割・権限・不変条件・承認ゲートはAI判断で変更できない / Authority and approvals are not defaults.**
 機械で判定できることは心がけでなく `tests/` に置く / Whatever can be checked mechanically
 belongs in `tests/`, not in good intentions — those checks are rules, not defaults.
 
@@ -75,22 +89,24 @@ belongs in `tests/`, not in good intentions — those checks are rules, not defa
 
 ## 自律範囲 / Autonomy — 確認なしでやってよいこと
 
-迷ったら止まるのではなく、**仮定を STATE に明記して進める** /
-When uncertain, proceed on a stated assumption recorded in STATE rather than halting.
+契約内の軽微・可逆な**実装詳細**だけは仮定を STATE に記録して進める /
+Only minor, reversible implementation details may proceed on documented assumptions.
+要求・設計・受入基準が不明なら独断せず、必要な決定を権限者へ返す / Escalate design ambiguity.
 
 - 読み取り全般 / ビルド・テスト・lint・型チェックの実行 / Reading, building, testing, linting
 - 実装・リファクタ・テスト追加、作業ブランチの作成、ローカル commit /
   Implementing, refactoring, adding tests, branching, committing locally
 - 一時ファイル(scratch)の作成、サブエージェント・並列探索の起動 /
   Scratch files, subagents, parallel exploration
-- 仕様の穴を埋める合理的な既定値の採用(採った仮定を STATE に1行書く) /
-  Filling spec gaps with reasonable defaults (record the assumption in STATE)
+- 既存契約内の軽微な実装方式の選択(仮定を STATE に記録し、設計を変えない) /
+  Minor implementation choices within approved contract (not changes to design)
 - **規約そのものへの改善提案**(このファイルを含む。提案は LOG に書き、適用はユーザー承認後) /
   Proposing changes to this convention itself (write the proposal in LOG; apply after approval)
 
-確認が要るもの(これだけ)/ Ask first — only these:
+事前承認が必要（列挙は限定ではない）/ Requires approval (non-exhaustive):
 
-- `push` / PR作成 / リリース・デプロイ、外部への送信 / Pushing, PRs, releases, anything outbound
+- 要求・設計思想・確定設計・受入基準の変更、作業範囲拡大、役割・権限変更 / Design, scope and authority changes
+- `push` / PR作成 / main統合 / リリース・デプロイ、外部への送信 / Pushing, PRs, merging, releases, anything outbound
 - 破壊的操作(履歴改変、force push、ファイル・データの削除)/ Destructive operations
 - 依存の追加・更新、有料APIの実行 / Adding or upgrading dependencies, paid API calls
 - `docs/STATE.md`「着手禁止」に載っている項目 / Anything listed under STATE's "Do Not Start"

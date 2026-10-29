@@ -228,3 +228,21 @@
   - 不正パス混入による逆検証で FAILED を確認。
 - 申し送り:
   - 全リポジトリでローカルコミット作成済み。リモートへの push はユーザー確認・指示待ち。
+
+---
+
+## 2026-10-29 dev-conventions v2 実装GPT — 権限・開発思想の実装
+
+- やったこと / Done: ユーザー委任のv2仕様に沿い、開発思想の正本新設、README/AGENTS/配布テンプレ更新、静的規約テスト追加、STATE更新。
+- 逸脱・追加・スキップ / Deviations, additions, skips: 他リポジトリへの適用はなし。リモートへのpush・PR・main統合はなし。GitHub cloneができない環境のため、変更対象主要ファイルのblob SHAがmainと一致するローカル再構成で検証。元のmainの全ファイルをcloneして実行したものではない。
+- 検証 / Verification: 再構成環境 `python -m unittest discover -s tests -p "test_*.py"` 14件PASS（既存8・新規6）。逆検証として旧入口・旧README復元、およびCLAUDE.md混入・思想正本の削除でFAILを確認。配布テストも模擬新規プロジェクトで検証。
+- 申し送り / Notes for next runner: 実main上でパッチ適用と全テスト再実行、独立レビュー、ユーザー最終受入が必要。設計変更・権限変更の承認実在は文字列テストでは検証できない。
+
+---
+
+## 2026-10-29 dev-conventions v2 実装GPT — main反映のユーザー承認
+
+- 承認 / Approval: ユーザーが「これをdevのmainにして。開発しながら改良する。こちらでPULLするので成果物提出は不要」と明示。v2をmainへ反映する権限を委任した。これは他repo自動展開や設計権限の委任ではない。
+- 実施 / Done: GitHub main `916943d993b45b09c593ae4ff1bbb94b1b0453f6` を基準に、v2の8変更ファイルをfast-forwardで反映。LOGの既存全履歴と他ファイルを保持。CLAUDE.mdの新設・既存分岐の統合・PR作成・強制更新はなし。
+- 検証 / Verification: main由来の変更前Git blob SHAとの一致、および変更後7ファイルのローカル検証済みGit blob SHAとの一致を照合。ローカル再構成環境は14件PASS、逆検証6件、配布模擬7件PASS。実リポジトリをcloneしてのPythonテストと独立レビューは未実施。
+- 申し送り / Notes: 継続改良は本規約の委任範囲内で実施し、設計・受入基準変更は事前承認を求める。実リポジトリでの全件回帰は次回確認する。

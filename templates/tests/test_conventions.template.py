@@ -97,5 +97,23 @@ class IdeaShelf(unittest.TestCase):
         )
 
 
+class AuthorityContract(unittest.TestCase):
+    """配布先での静的存在検査。承認履歴の真正性は運用・レビューで確認する。"""
+
+    def test_roles_and_approval_in_agents(self):
+        agents = _read("AGENTS.md")
+        for marker in ("ユーザー", "設計担当AI", "実装担当AI", "事前承認", "受入基準"):
+            self.assertIn(marker, agents)
+        self.assertIn("dev-conventions/docs/DEVELOPMENT_PHILOSOPHY.md", agents)
+        self.assertNotIn("仕様の穴を埋める合理的な既定値", agents)
+
+    def test_no_legacy_ai_entry(self):
+        legacy = [
+            str(path.relative_to(ROOT)) for path in ROOT.rglob("CLAUDE.md")
+            if ".git" not in path.parts
+        ]
+        self.assertEqual([], legacy, "AGENTS.mdに一本化し、CLAUDE.mdを作らない")
+
+
 if __name__ == "__main__":
     unittest.main()

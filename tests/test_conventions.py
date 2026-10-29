@@ -46,6 +46,7 @@ def parse_shelf(ideas_md: str) -> list[tuple[str, list[str]]]:
 REQUIRED_FILES = [
     "README.md",
     "AGENTS.md",
+    "docs/DEVELOPMENT_PHILOSOPHY.md",
     "global-pointer.md",
     "projects.md",
     "docs/STATE.md",
@@ -163,6 +164,65 @@ class Templates(unittest.TestCase):
     def test_agents_template_mentions_negative_verification(self):
         """緑だけを根拠にさせない (README 原則2)。"""
         self.assertIn("FAIL", _read("templates/AGENTS.template.md"))
+
+
+class DevelopmentAuthority(unittest.TestCase):
+    """文字列・リンクの静的保証のみ。委任や人間の承認の実在は証明しない。"""
+
+    def test_philosophy_has_required_sections(self):
+        philosophy = _read("docs/DEVELOPMENT_PHILOSOPHY.md")
+        required = [
+            "目的と適用範囲", "役割ベースの権限体系", "企画・設計権限と実装裁量",
+            "フロントローディング", "リスクと不確実性の優先順位", "最短反証実験",
+            "実装契約の必須事項", "証拠に基づく完了判定", "独立レビューとユーザー受入",
+            "失敗時の差戻し・再設計", "役割交代と引継ぎ",
+            "プロジェクト固有規約との関係",
+        ]
+        for title in required:
+            with self.subTest(section=title):
+                self.assertRegex(philosophy, rf"(?m)^## \d+\. {re.escape(title)}$")
+
+    def test_readme_and_agents_reference_existing_canon(self):
+        canon = "docs/DEVELOPMENT_PHILOSOPHY.md"
+        self.assertTrue((ROOT / canon).is_file())
+        for file in ("README.md", "AGENTS.md"):
+            with self.subTest(file=file):
+                self.assertIn(canon, _read(file))
+
+    def test_authority_markers_in_all_entries(self):
+        """共通入口と配布テンプレが役割と承認ゲートを落とさない。"""
+        for file in ("AGENTS.md", "templates/AGENTS.template.md"):
+            text = _read(file)
+            with self.subTest(file=file):
+                for marker in ("ユーザー", "設計担当AI", "実装担当AI",
+                               "独立レビュー担当", "事前承認", "受入基準"):
+                    self.assertIn(marker, text, f"{file} lacks {marker}")
+                self.assertNotIn("仕様の穴を埋める合理的な既定値", text)
+                self.assertNotIn("確認が要るもの(これだけ)", text)
+
+    def test_single_common_ai_entry(self):
+        prohibited = [
+            str(path.relative_to(ROOT)) for path in ROOT.rglob("CLAUDE.md")
+            if ".git" not in path.parts
+        ]
+        prohibited += [
+            str(path.relative_to(ROOT)) for path in ROOT.rglob("CLAUDE.template.md")
+            if ".git" not in path.parts
+        ]
+        self.assertEqual([], prohibited, "AI共通入口はAGENTS.mdのみ")
+
+    def test_four_file_rules_and_negative_verification_survive(self):
+        readme = _read("README.md")
+        for path in ("AGENTS.md", "docs/STATE.md", "docs/LOG.md", "docs/IDEAS.md"):
+            self.assertTrue((ROOT / path).is_file())
+            self.assertIn(f"`{path}`", readme)
+        self.assertIn("逆検証", readme)
+        self.assertIn("FAIL", _read("templates/AGENTS.template.md"))
+        self.assertIn("docs/IDEAS.md", _read("templates/docs/STATE.template.md"))
+
+    def test_template_keeps_shared_philosophy_link(self):
+        self.assertIn("dev-conventions/blob/main/docs/DEVELOPMENT_PHILOSOPHY.md",
+                      _read("templates/AGENTS.template.md"))
 
 
 if __name__ == "__main__":

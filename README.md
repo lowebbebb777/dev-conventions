@@ -9,8 +9,22 @@ A shared convention for repositories developed in relay by multiple AI agents
 
 次走者が**「読む」のでなく「検証」で現在地を把握できる**状態を保つこと。
 黙った逸脱と文書の陳腐化による事故をなくすこと。
+さらに、開発思想と役割ごとの権限を共有し、仕様を勝手に変えずに要求達成を検証すること。
 Keep the repo in a state where the next runner can locate the current position by
 **verifying, not reading**. Eliminate accidents caused by silent deviations and stale docs.
+
+## 開発思想・権限の正本 / Canonical Development Philosophy
+
+**[docs/DEVELOPMENT_PHILOSOPHY.md](docs/DEVELOPMENT_PHILOSOPHY.md)** は全プロジェクト共通の
+開発思想と権限境界の正本。AI の権限はモデル名・性能・製品名ではなく、**ユーザーによる明示的な役割委任**で決まる。
+ユーザーが最終承認を行い、企画・設計はユーザーと明示的に任命された設計担当 AI のみが担う。
+実装担当は承認済み契約内の技術的裁量を持つが、要求、設計、受入基準、作業範囲、権限は変えない。
+独立レビュー・必要な実機評価・ユーザー受入をテスト PASS と区別する。
+
+規約の層: `docs/DEVELOPMENT_PHILOSOPHY.md`（権限・思想）→ `README.md`（構成・原則）→
+`AGENTS.md`（全 AI の実行入口）→ `docs/STATE.md`（現在地）/ `docs/LOG.md`（承認・履歴）/
+`docs/IDEAS.md`（棚）。引継ぎの既存優先順位は README > global-pointer > STATE。
+明示されたユーザー指示と承認済みの実装契約を、一般規約で上書きしない。
 
 ## 4ファイル構成 / The Four Files
 
@@ -69,6 +83,15 @@ every agent, every session.
    Apply Principle 2 to the convention itself. Good intentions decay; whatever can be
    checked mechanically belongs in `tests/` (line caps, index validity, required files).
 
+## 実装契約から受入まで / Working Procedure
+
+1. **委任を確認**: ユーザーが定めた設計・実装・独立レビューの担当と権限範囲を記録する。モデル名では代用しない。
+2. **上流で確定**: 要求・不変条件・対象外・受入基準・必要な実機試験を確かめ、最も安価な反証実験を先に行う。
+3. **契約内で実装**: 軽微・可逆な実装選択は進めるが、仕様の穴を設計判断で埋めない。影響・選択肢・推奨案を返す。
+4. **証拠を残す**: 既存／追加テスト、変更前 FAIL の逆検証、回帰、実機評価の有無を区別して記録する。
+5. **独立レビュー・ユーザー受入**: 実装者の自己申告やテスト PASS だけで最終完了を宣言しない。
+   変更・承認履歴は `docs/LOG.md`、現在地は `docs/STATE.md` に残す。
+
 ## 新規プロジェクトへの導入 / Adopting in a New Project
 
 1. `templates/AGENTS.template.md` → リポジトリ直下に `AGENTS.md` としてコピーし、穴埋め
@@ -79,3 +102,9 @@ every agent, every session.
    既存の `CLAUDE.md` は最新Headから削除して内容を `AGENTS.md` に統合する /
    Unify on `AGENTS.md` as the common entry point for all agents. Do not create tool-specific
    files like `CLAUDE.md`; delete existing `CLAUDE.md` files from latest Head and integrate their contents into `AGENTS.md`.
+
+4. `docs/DEVELOPMENT_PHILOSOPHY.md` を共通原則として参照し、ユーザーの明示委任と
+   プロジェクト固有の承認済み実装契約を `AGENTS.md` から辿れるようにする。
+5. `templates/tests/test_conventions.template.py` を `tests/test_conventions.py` に配備し、
+   既存の4ファイルと権限規則、禁止された `CLAUDE.md` の不在を検証する。
+   他リポジトリへ自動展開しない（対象と適用はユーザー承認を要する）。
