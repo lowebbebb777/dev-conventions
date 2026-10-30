@@ -244,6 +244,9 @@ class ValueFirstScopePruning(unittest.TestCase):
         self.assertIn("ユーザーのためにならない仕事は全て捨てていく。", ideas)
         self.assertIn("原文（ユーザー・逐語）", ideas)
         self.assertIn("詩文（AI解釈）", ideas)
+        pointer = _read("global-pointer.md")
+        self.assertIn("逐語原文＋別記の詩文", pointer)
+        self.assertIn("逐語原文＋詩文", ideas)
 
 
 if __name__ == "__main__":
