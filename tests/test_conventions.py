@@ -225,5 +225,26 @@ class DevelopmentAuthority(unittest.TestCase):
                       _read("templates/AGENTS.template.md"))
 
 
+class ValueFirstScopePruning(unittest.TestCase):
+    """思想正本§14が全AI入口まで届くことの静的テスト。"""
+
+    def test_scope_gate_is_reachable(self):
+        philosophy = _read("docs/DEVELOPMENT_PHILOSOPHY.md")
+        for marker in ("## 14. ユーザー価値", "既存との重複", "捨てる仕事",
+                       "リリース", "忠告", "ユーザーの明示委任"):
+            self.assertIn(marker, philosophy)
+        for file in ("AGENTS.md", "templates/AGENTS.template.md", "global-pointer.md"):
+            with self.subTest(file=file):
+                self.assertIn("ユーザー", _read(file))
+                self.assertIn("捨てる", _read(file))
+
+    def test_did_original_and_poem(self):
+        ideas = _read("docs/IDEAS.md")
+        self.assertIn("「捨てるべき仕事」を決めるのは近年の日本人がやれてない最重要任務だ（これdid）", ideas)
+        self.assertIn("ユーザーのためにならない仕事は全て捨てていく。", ideas)
+        self.assertIn("原文（ユーザー・逐語）", ideas)
+        self.assertIn("詩文（AI解釈）", ideas)
+
+
 if __name__ == "__main__":
     unittest.main()
