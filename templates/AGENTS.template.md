@@ -37,6 +37,12 @@ If the repo has no tests, say so and write the verification procedure used inste
 - 優先順位: ユーザーの明示指示・承認済み実装契約 > 共通権限原則 > 製品固有規約の範囲内の実装裁量。
   LOG の事後報告や STATE への仮定記載は承認に代わらない。
 
+## ユーザー価値と捨てる仕事 / Value-First Scope Pruning (§14, required)
+
+- 新しい仕事の前に、**ユーザー価値、既存との重複、最優先リリースへの影響、捨てる・統合する仕事**を確認する / Check user benefit, duplicates, release impact, and what to stop.
+- 最優先目標とぶつかる新案には**根拠を示してユーザーへ忠告**する。最終判断はユーザー。AIは独断でスコープを変更しない / Warn respectfully, user decides.
+- 安全・品質・法令・権利・データ保全・必要な実機評価を安易に捨てない。正本: `docs/DEVELOPMENT_PHILOSOPHY.md` §14。
+
 ## 終了時の義務 / End-of-Session Duties
 
 このリポジトリは複数エージェントのリレーで開発されている。記録が次走者の命綱 / This repo is developed in relay by multiple agents. The record is the next runner's lifeline.
