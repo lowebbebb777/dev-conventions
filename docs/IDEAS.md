@@ -3,8 +3,8 @@
 <!-- 追記のみ。毎セッション読まない。着手前に関連語で grep するだけ。
      Append-only. Not read every session; just grep by keyword before starting. -->
 
-1件は**詩**(散文でない1〜2文)＋**タグ2語以上**。書き方は `templates/docs/IDEAS.template.md`。
-One entry = a poem (one or two lines, never prose) + **two or more grep tags**.
+新規1件は**発言者付き逐語原文＋詩文（散文でない1〜2文）＋タグ2語以上**。原文とAI解釈は区別する。旧詩のみの記録は残し、確認できない逐語原文を後から作らない。書き方は `templates/docs/IDEAS.template.md`。
+New entries = verbatim attributed original + separate poem (1–2 lines) + **two or more grep tags**. Preserve legacy poetry-only entries.
 
 タグは詩の外に置く。詩は名詞を削ぎ落とす形式なので、**詩だけでは grep に掛からない**
 (実例: 「索引は…」は `projects.md` を含まないまま `projects.md` の話をしている)。
