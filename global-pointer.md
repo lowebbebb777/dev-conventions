@@ -35,6 +35,7 @@ Paste only the text below into each AI tool's global settings. Never paste the c
   `docs/LOG.md`/`docs/IDEAS.md`/`tests/test_conventions.py` を作成 + `projects.md` に1行追加 + commit。
   既にあるファイルは上書きしない。
 - **did = アイディアを棚に落とす**: 直前に出た案を、今いる repo の `docs/IDEAS.md` へ
-  **詩**(散文でない1〜2文)で追記する。仕様も手順も書かない。STATE には置かない。
-  横断的な着想を `lowebbebb777/Ideas` へ集約したい場合は、その旨を明示して指示すること。
+  **発言者を明記した逐語原文＋別記の詩文（1〜2文）＋具体タグ2語以上**で保存する。原文を意訳しない。
+  仕様も手順も書かない。STATE には置かない。横断的な着想を `lowebbebb777/Ideas` へ
+  集約したい場合は、その旨を明示して指示すること。
 ```
