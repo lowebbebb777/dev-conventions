@@ -334,3 +334,15 @@
 - **修正:** 重複見出しを除去。MultiAgentDesignReview をmain guard前へ移動。配布テンプレテストメソッドを AuthorityContract クラス内かつmain guard前へ移動。修正コミット: 2065acf60466aa451b05973b0b079b873c9d60f1。
 - **検証:** GitHubから修正3ファイルを読み戻し、見出し数・クラス/メソッド配置・main guard数を確認。PR mergeable=true。GitHub Actions workflow runsは0件。Python全回帰・新規テストの旧版FAIL逆検証はNOT_RUN。
 - **承認:** ユーザーがPR作成およびmain統合を承認。main統合後にmainの内容を読み戻して確認する。
+
+
+---
+
+## 2026-11-01 GPT — §17 PR #1 main統合完了
+
+- **承認:** ユーザーの明示承認に基づきPR #1をmainへsquash merge。
+- **PR:** https://github.com/lowebbebb777/dev-conventions/pull/1（closed / merged）。
+- **Merge commit:** 6808b7ce1737565dd2aa0412fdea457117df7af2。
+- **main反映確認:** mainから10変更ファイルを読み戻し、§17本文、README/AGENTS/配布テンプレ/global-pointerの参照、DR記録テンプレートの見出し重複解消、テストクラス・メソッド配置を確認。
+- **検証限界:** GitHub Actions workflow runsなし。CodeRabbitは自動レビュー対象外。Python全回帰・新規テストの旧版FAIL逆検証・Claude独立レビュー・実運用受入はNOT_RUN。テストPASSとは記録しない。
+- **次:** 実cloneでPython全回帰と旧版FAIL逆検証を行い、Claude独立レビューを別途実施。§17は重要DRで試行し、他repoへは個別判断で展開する。
