@@ -298,3 +298,14 @@
 - **検証**: 変更前は§16・DR123・初回出荷審査が規約正本に存在しない（旧版静的マーカー検査FAIL相当）。候補の節番号、8ゲート、各入口への参照、テンプレート、初回出荷承認分離、既存§1〜15維持を静的照合。GitHub反映後のファイルを再取得して確認。Pythonによる実clone全回帰・独立レビューは **NOT_RUN**（ネットワーク制約により実clone不可）。テストPASSとは記録しない。
 - **逸脱**: なし。対象repoのmainへの直接PUSHはユーザーの当該指示を根拠とする。force push・履歴改変・他repo更新はしない。
 - **次**: dev-conventionsの実cloneで全テスト実行と独立レビュー、RevoAimでのDR運用試行。AIがDRの最終承認・初回出荷承認を代行しない。
+
+---
+
+## 2026-10-31 GPT（GitHub接続）— RevoAimプロジェクト登録
+
+- ユーザー承認: RevoAimの上流設計作成に伴い、RevoAimとdev-conventionsの作業ブランチ作成・コミットを許可。main統合・PR作成は行わない。
+- 実施: `projects.md` にRevoAimを登録し、正典ポインタを `AGENTS.md` → `docs/STATE.md` → `docs/UPSTREAM_DESIGN.md` とした。STATEを現在地に更新し、本エントリを追記。
+- 逸脱・追加・スキップ: ローカルclone先は未確認のため `(clone先未固定)` と記載。RevoAim・dev-conventionsのmainは変更しない。
+- 検証: main HEADと対象ファイルをGitHubから取得し、登録行・remote URL・正典パス・STATE 50行以内を静的確認。RevoAim側の作業ブランチcommitは `e0fe046e04857df85fac19ce48065847e7912a71`。dev-conventionsのPythonテスト・逆検証・独立レビューはNOT_RUN。
+- 申し送り: RevoAimの上流設計はDR1/DR2統合ドラフト。ユーザー確認後にDR3へ進む。dev-conventions全テストと独立レビューは実clone環境で行う。
+
