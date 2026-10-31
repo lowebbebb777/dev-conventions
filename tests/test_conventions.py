@@ -308,5 +308,41 @@ class DesignReviewGates(unittest.TestCase):
             self.assertIn(field, record)
 
 
+class MultiAgentDesignReview(unittest.TestCase):
+    """思想正本§17が全AI入口とDR記録テンプレートへ届くことを静的検証する。"""
+
+    def test_canonical_multi_agent_review_protocol(self):
+        philosophy = _read("docs/DEVELOPMENT_PHILOSOPHY.md")
+        required = (
+            "## 17. 複数AIによる独立設計審査",
+            "他のAIの結論・理由を読む前に",
+            "相互批判と再評価",
+            "未解消の反対意見",
+            "ユーザーの意見・仮説・希望も検証対象",
+            "多数決・AI間の合意",
+            "NOT_RUN",
+        )
+        for marker in required:
+            with self.subTest(marker=marker):
+                self.assertIn(marker, philosophy)
+
+    def test_multi_agent_policy_is_reachable_from_entries(self):
+        for path in ("README.md", "AGENTS.md", "templates/AGENTS.template.md",
+                     "global-pointer.md"):
+            with self.subTest(path=path):
+                body = _read(path)
+                self.assertIn("§17", body)
+                self.assertIn("独立評価", body)
+                self.assertIn("反対意見", body)
+                self.assertIn("ユーザー", body)
+
+    def test_dr_record_captures_independent_and_dissenting_views(self):
+        record = _read("templates/docs/DR_RECORD.template.md")
+        for marker in ("初回独立評価", "相互批判", "再評価", "少数意見",
+                       "ユーザーの最終判断", "NOT_RUN"):
+            with self.subTest(marker=marker):
+                self.assertIn(marker, record)
+
+
 if __name__ == "__main__":
     unittest.main()

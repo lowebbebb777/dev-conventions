@@ -29,6 +29,8 @@ Paste only the text below into each AI tool's global settings. Never paste the c
 
 - 商品開発のDR（デザインレビュー）は `dev-conventions/docs/DEVELOPMENT_PHILOSOPHY.md` §16 が正本。DR123等の統合審査・差戻し・軽量DRを許容し、初回出荷審査は別途承認とする。
 - **投資判断の鉄則（§16.4）:** 市場に勝てる余地を数値と証拠で確認してから作る。新規製品/市場参入の証拠不足は `PENDING` とし、次工程へ進めない。機会費用・長期継続性も評価する。詳細は正本を読む（ここに複製しない）。
+- **複数AIによる独立DR（§17）:** 重要な正式DRではGPT・Claude等が相手の初回結論を見る前に独立評価し、その後に根拠付きで相互批判する。反対意見を残し、ユーザーの意見も検証する。多数決・AI間の合意で決めず、最終決定はユーザー。軽微な作業に3者DRを強制しない。詳細は正本 §17（本文をここへ複製しない）。
+
 
 - **AIとGit名義**: AI名義のGit Author / Committer / Co-Authored-Byを使用しない。AIの作業と人間の承認はLOGへ分離記録。既存履歴は変更しない。正本: `dev-conventions/docs/COMMIT_ATTRIBUTION.md`。
 

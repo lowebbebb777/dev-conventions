@@ -37,6 +37,11 @@ Keep the repo in a state where the next runner can locate the current position b
 
 - **事業投資ゲート（思想正本 §16.4）:**「市場に勝てる余地があるから作る。作りたいから市場を探すのではない」。新規製品・市場参入は市場/収益/継続性/機会費用を数値で審査し、証拠不足は `PENDING` として次工程へ進まない。
 
+## 複数AIによる独立設計審査（§17）
+
+重要な正式DRでは、GPT・Claude等が**相手の初回結論を見る前に独立評価**し、その後に根拠付きで相互批判・再評価する。反対意見を無理に統一せず、ユーザーの意見も検証対象とする。多数決やAI間の合意を根拠の代わりにせず、最終決定はユーザーが行う。軽微な変更まで3者DRを強制しない。詳細は[思想正本 §17](docs/DEVELOPMENT_PHILOSOPHY.md)。
+
+
 ## AIによる開発とGit名義
 
 AIをGit Author / Committer / AIのCo-Authored-Byに設定せず、作業記録は `docs/LOG.md` に残す。**過去の履歴は変更しない**。正本: [docs/COMMIT_ATTRIBUTION.md](docs/COMMIT_ATTRIBUTION.md)、思想§15。

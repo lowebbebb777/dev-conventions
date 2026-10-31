@@ -310,3 +310,27 @@
 - **検証:** 変更前mainに§16.4と投資ゲートがないことを確認。更新後は対象ファイルの内容・参照・PENDING/機会費用/シナリオ項目をGitHub APIで読み戻して照合する。Python全回帰、実cloneでの新規テスト逆検証、独立レビューはNOT_RUN。
 - **逸脱:** なし。他repoへの自動展開なし。過去履歴の変更なし。
 - **次:** 実cloneで全Pythonテスト・新規テストの旧版FAIL・独立レビューを実施。市場性ゲートの適用は各プロジェクトのDR1で行い、規約追加だけでGOを与えない。
+
+
+---
+
+## 2026-11-01 GPT — 複数AIによる独立設計審査（思想正本 §17）
+
+- **ユーザー承認:** 重要なDRにClaudeを正式参加させ、GPT・Claude・ユーザーの3者で討論する方針、および独立評価・相互批判・反対意見維持・ユーザー意見の検証・ユーザー最終決定の5原則をdev-con2へ追加することを承認。
+- **決定:** 思想正本§17に複数AIレビューの共通手順を定義。重要な正式DRでは、同一証拠パッケージに基づきGPT/Claude等が相互開示前に独立評価し、その後に根拠付き相互批判・再評価を行う。初回評価と再評価を分けて保持し、未解消の反対意見を残す。多数決やAI間の合意を証拠・承認の代替にしない。ユーザーの意見も検証対象とする。
+- **軽量化:** 軽微な修正・通常保守に3者DRを強制しない。モデルごとの賛成/反対役を固定しない。評価者不在・独立性欠如は NOT_RUN 等で明示し、完了扱いしない。
+- **変更ファイル:** docs/DEVELOPMENT_PHILOSOPHY.md §17、README.md、AGENTS.md、templates/AGENTS.template.md、global-pointer.md、templates/docs/DR_RECORD.template.md、tests/test_conventions.py、templates/tests/test_conventions.template.py、docs/STATE.md。
+- **検証:** mainの基準SHA 5d462d44c0ed1497de0991cfde48d7392f9f2e5e から作業ブランチ feature/multi-agent-dr-review-20261101 を作成。更新後の全対象ファイルをGitHubから読み戻して、節番号・入口リンク・DR記録項目・テストマーカー・STATE 50行以内を静的照合する。Python全回帰と新規テストの旧版FAIL逆検証は NOT_RUN。Claude独立レビューも NOT_RUN。
+- **承認境界:** 作業ブランチへの変更のみ。PR作成・main統合・他repoへの展開・各AIのグローバル設定変更は実施していない。必要な場合は別途ユーザー承認を得る。
+- **次:** GitHub読み戻しによる静的確認を完了し、実cloneでPython全回帰・逆検証、Claude独立レビュー、ユーザー受入を行う。
+
+
+---
+
+## 2026-11-01 GPT — §17 PR作成・差分修正
+
+- **PR:** ユーザー承認に基づき PR #1（feature/multi-agent-dr-review-20261101 → main）を作成。URL: https://github.com/lowebbebb777/dev-conventions/pull/1。
+- **差分レビューで発見した問題:** DR記録テンプレートの「検証とリスク」見出し重複、規約テストクラスのmain guard後配置、配布テンプレテストメソッドのクラス外配置。
+- **修正:** 重複見出しを除去。MultiAgentDesignReview をmain guard前へ移動。配布テンプレテストメソッドを AuthorityContract クラス内かつmain guard前へ移動。修正コミット: 2065acf60466aa451b05973b0b079b873c9d60f1。
+- **検証:** GitHubから修正3ファイルを読み戻し、見出し数・クラス/メソッド配置・main guard数を確認。PR mergeable=true。GitHub Actions workflow runsは0件。Python全回帰・新規テストの旧版FAIL逆検証はNOT_RUN。
+- **承認:** ユーザーがPR作成およびmain統合を承認。main統合後にmainの内容を読み戻して確認する。
