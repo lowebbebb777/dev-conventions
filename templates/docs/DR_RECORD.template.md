@@ -21,6 +21,7 @@
 - **DR1の場合:** 専用記録テンプレート [DR1_INVESTMENT_GATE_RECORD.template.md](DR1_INVESTMENT_GATE_RECORD.template.md) と docs/DR1_INVESTMENT_GATE_V1.md を使用する。
 - DR1の6軸・N/A・3者採点・PENDINGの扱いは専用ゲートに従う。
 - DR2〜DR6の通常審査に、DR1の市場採点表や自社製品の販売/CAC/継続率等を遡及適用しない。
+- PENDINGの優先順位・許可範囲はDR1専用記録に残す。
 - DR1以外で大きな投資判断が必要な場合は、その段階の目的に合った独立の投資メモを作る。
 
 ## 段階別判断（統合DRでも省略しない）

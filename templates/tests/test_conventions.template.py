@@ -142,9 +142,9 @@ class AuthorityContract(unittest.TestCase):
         self.assertIn("DR1 Investment Gate", agents)
         self.assertIn("PENDING", agents)
         design = _read("docs/DR1_INVESTMENT_GATE_V1.md")
-        self.assertIn("6評価軸", design)
-        self.assertIn("未調査を0点にしない", design)
-        self.assertIn("PENDINGは開発禁止ではない", design)
+        self.assertIn("DR1で審査する6項目", design)
+        self.assertIn("N/A（未評価）を0点としてはならない", design)
+        self.assertIn("PENDINGは開発禁止ではなく", design)
 
 
 if __name__ == "__main__":

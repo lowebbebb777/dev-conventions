@@ -278,10 +278,10 @@ class DesignReviewGates(unittest.TestCase):
 
 
     def test_market_viability_is_a_mandatory_investment_gate(self):
-        """市場性の証拠不足をGOにせず、DR1で投資判断する入口が届くこと。"""
+        """DR1が市場参入審査6軸に限定され、PENDINGの扱いが入口へ届く。"""
         philosophy = _read("docs/DEVELOPMENT_PHILOSOPHY.md")
-        for marker in ("## 16.4 市場性・事業継続性", "市場に勝てる余地があるから作る",
-                       "PENDING", "機会費用", "悲観・標準・楽観", "DR2"):
+        for marker in ("### 16.4 DR1：市場参入価値", "市場に勝てる余地があるから作る",
+                       "6評価軸", "N/A", "PENDING", "機会費用", "平均点は参考", "DR2"):
             with self.subTest(marker=marker):
                 self.assertIn(marker, philosophy)
         for file in ("AGENTS.md", "templates/AGENTS.template.md", "README.md", "global-pointer.md"):
@@ -290,7 +290,8 @@ class DesignReviewGates(unittest.TestCase):
                 self.assertIn("§16.4", body)
                 self.assertIn("PENDING", body)
         record = _read("templates/docs/DR_RECORD.template.md")
-        for marker in ("市場性・事業性", "機会費用", "悲観", "標準", "楽観", "PENDING"):
+        for marker in ("DR1の場合", "DR1_INVESTMENT_GATE_RECORD.template.md",
+                       "DR2〜DR6", "PENDINGの優先順位"):
             with self.subTest(record_field=marker):
                 self.assertIn(marker, record)
 
@@ -357,7 +358,7 @@ class DR1InvestmentGateDesign(unittest.TestCase):
 
     def test_unknown_is_not_zero_and_no_arbitrary_cutoff(self):
         design = _read("docs/DR1_INVESTMENT_GATE_V1.md")
-        for marker in ("N/A", "未調査を0点にしない", "固定80点/70点等の合格ライン"):
+        for marker in ("N/A", "N/A（未評価）を0点としてはならない", "固定80点/70点等の合格ライン"):
             with self.subTest(marker=marker):
                 self.assertIn(marker, design)
         self.assertIn("固定合格ラインを現時点では設けない", design)
