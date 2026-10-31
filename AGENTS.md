@@ -23,7 +23,7 @@ python -m unittest discover -s tests -p "test_*.py"
 
 開発思想と権限の正は `docs/DEVELOPMENT_PHILOSOPHY.md`。
 引継ぎ文書の正は `README.md` > `global-pointer.md` > `docs/STATE.md`。
-最新の明示的ユーザー指示・承認済み実装契約は一般規約より優先する。
+最新の明示的ユーザー指示・承認済み実装契約は一般的な作業既定値より優先する。ただし正式採用済みDR1 Investment Gateの個別案件の合格条件は、個別の「GOにして」という指示で上書きしない。ユーザーはいつでもPENDING/STOPを選択でき、GO基準の変更はDR1 Gateの正式改定手続きに限る。
 
 ## 役割と権限の境界（例外不可）
 

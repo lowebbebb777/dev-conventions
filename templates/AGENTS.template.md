@@ -34,7 +34,7 @@ If the repo has no tests, say so and write the verification procedure used inste
 - **独立レビュー担当 / Independent reviewer**: 契約と証拠の照合。最終承認を代行しない。
 - AIモデル名・性能・製品名から権限を推定しない。**仕様変更、受入基準変更、範囲拡大、権限変更は事前承認**。
 - 設計の穴・矛盾は影響、選択肢、推奨案を LOG に報告し、承認前に仕様を変えない。
-- 優先順位: ユーザーの明示指示・承認済み実装契約 > 共通権限原則 > 製品固有規約の範囲内の実装裁量。
+- 優先順位: ユーザーの明示指示・承認済み実装契約 > 共通権限原則 > 製品固有規約の範囲内の実装裁量。ただし正式採用済みDR1 Investment Gateの個別案件の合格条件は、個別の「GOにして」という指示で上書きしない。ユーザーはいつでもPENDING/STOPを選択でき、GO基準の変更はDR1 Gateの正式改定手続きに限る。
   LOG の事後報告や STATE への仮定記載は承認に代わらない。
 
 ## ユーザー価値と捨てる仕事 / Value-First Scope Pruning (§14, required)

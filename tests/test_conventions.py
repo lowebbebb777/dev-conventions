@@ -354,6 +354,7 @@ class DR1InvestmentGateDesign(unittest.TestCase):
             "事業魅力度スコア", "証拠強度", "一次証拠カバレッジ",
             "80点", "70点", "G0", "G9", "有償需要", "機会費用",
             "5年間", "CONDITIONAL GOを使用しない", "override_pass",
+            "個別の「GOにして」という指示で上書きしない",
             "管理者権限", "DR2", "DR1のみ",
         ):
             with self.subTest(marker=marker):
@@ -372,6 +373,10 @@ class DR1InvestmentGateDesign(unittest.TestCase):
                      "global-pointer.md", "docs/DEVELOPMENT_PHILOSOPHY.md"):
             with self.subTest(path=path):
                 self.assertIn("DR1_INVESTMENT_GATE_V1.md", _read(path))
+        for path in ("AGENTS.md", "templates/AGENTS.template.md",
+                     "docs/DEVELOPMENT_PHILOSOPHY.md"):
+            with self.subTest(non_bypass=path):
+                self.assertIn("個別の「GOにして」という指示で上書きしない", _read(path))
 
     def test_dr1_record_template_is_separate_and_complete(self):
         path = "templates/docs/DR1_INVESTMENT_GATE_RECORD.template.md"
