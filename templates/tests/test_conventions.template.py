@@ -122,5 +122,12 @@ class AuthorityContract(unittest.TestCase):
         for rule in ("DR0", "DR6", "DR123", "初回出荷審査"):
             self.assertIn(rule, agents)
 
+
+    def test_market_investment_gate_is_referenced(self):
+        """新規repoのAGENTS入口が市場性の必須ゲートを引き継ぐ。"""
+        agents = _read("AGENTS.md")
+        self.assertIn("§16.4", agents)
+        self.assertIn("PENDING", agents)
+
 if __name__ == "__main__":
     unittest.main()

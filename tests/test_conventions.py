@@ -276,6 +276,24 @@ class DesignReviewGates(unittest.TestCase):
             with self.subTest(rule=rule):
                 self.assertIn(rule, philosophy)
 
+
+    def test_market_viability_is_a_mandatory_investment_gate(self):
+        """市場性の証拠不足をGOにせず、DR1で投資判断する入口が届くこと。"""
+        philosophy = _read("docs/DEVELOPMENT_PHILOSOPHY.md")
+        for marker in ("## 16.4 市場性・事業継続性", "市場に勝てる余地があるから作る",
+                       "PENDING", "機会費用", "悲観・標準・楽観", "DR2"):
+            with self.subTest(marker=marker):
+                self.assertIn(marker, philosophy)
+        for file in ("AGENTS.md", "templates/AGENTS.template.md", "README.md", "global-pointer.md"):
+            with self.subTest(file=file):
+                body = _read(file)
+                self.assertIn("§16.4", body)
+                self.assertIn("PENDING", body)
+        record = _read("templates/docs/DR_RECORD.template.md")
+        for marker in ("市場性・事業性", "機会費用", "悲観", "標準", "楽観", "PENDING"):
+            with self.subTest(record_field=marker):
+                self.assertIn(marker, record)
+
     def test_dr_reachable_from_entries_and_record_template(self):
         for file in ("AGENTS.md", "templates/AGENTS.template.md", "README.md", "global-pointer.md"):
             with self.subTest(file=file):

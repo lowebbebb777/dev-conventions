@@ -35,6 +35,8 @@ Keep the repo in a state where the next runner can locate the current position b
 - 小さな修正は変更リスクに見合う軽量DR・既存テストでよい。正式な初回出荷審査は初出荷時の明示的判断で、通常の更新は別のリスク別リリース審査。
 - [DR審査記録テンプレート](templates/docs/DR_RECORD.template.md) は任意導入。既存の4ファイルと承認ゲートは維持する。
 
+- **事業投資ゲート（思想正本 §16.4）:**「市場に勝てる余地があるから作る。作りたいから市場を探すのではない」。新規製品・市場参入は市場/収益/継続性/機会費用を数値で審査し、証拠不足は `PENDING` として次工程へ進まない。
+
 ## AIによる開発とGit名義
 
 AIをGit Author / Committer / AIのCo-Authored-Byに設定せず、作業記録は `docs/LOG.md` に残す。**過去の履歴は変更しない**。正本: [docs/COMMIT_ATTRIBUTION.md](docs/COMMIT_ATTRIBUTION.md)、思想§15。

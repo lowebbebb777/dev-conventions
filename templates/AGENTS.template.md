@@ -50,6 +50,8 @@ If the repo has no tests, say so and write the verification procedure used inste
 - 小さな変更は軽量DR／既存レビュー・テストでよい。重大リスクと受入・出荷の権限ゲートを省略しない / Scale depth to risk; never self-approve shipping.
 - 任意記録テンプレート: `dev-conventions/templates/docs/DR_RECORD.template.md`。DR審査とユーザー最終承認を混同しない。
 
+- **事業投資ゲート（共通思想 §16.4・必須）:** 新規製品/市場参入/大きな投資は、市場性・収益性・長期継続性・開発時間の機会費用を数値と根拠で審査する。「作りたいから市場を探す」のは禁止。証拠不足は `PENDING` であり、次の正式な開発段階へ進めない。詳細は共通思想 §16.4。
+
 ## AIとGit名義 / AI Commit Attribution (§15)
 
 - Git Author / Committerには本人が承認した人間や正規bot名義を使用。Claude・Codex・GPT等のAI名義とAIの `Co-Authored-By` 自動追加は禁止 / Use only authorized human or real bot identities.

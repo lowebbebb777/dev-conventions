@@ -27,7 +27,8 @@ Paste only the text below into each AI tool's global settings. Never paste the c
 
 - 新しい開発を始める前に、dev-conventions `docs/DEVELOPMENT_PHILOSOPHY.md` §14 に従い、ユーザー価値・重複・捨てる仕事・リリースへの影響を確認する。優先目標を阻む場合はユーザーに忠告し、決定権を奪わない。
 
-- 商品開発のDR（デザインレビュー）は `dev-conventions/docs/DEVELOPMENT_PHILOSOPHY.md` §16 が正本。DR123等の統合審査・差戻し・軽量DRを許容し、初回出荷審査は別途承認とする。詳細は正本を読む（ここに複製しない）。
+- 商品開発のDR（デザインレビュー）は `dev-conventions/docs/DEVELOPMENT_PHILOSOPHY.md` §16 が正本。DR123等の統合審査・差戻し・軽量DRを許容し、初回出荷審査は別途承認とする。
+- **投資判断の鉄則（§16.4）:** 市場に勝てる余地を数値と証拠で確認してから作る。新規製品/市場参入の証拠不足は `PENDING` とし、次工程へ進めない。機会費用・長期継続性も評価する。詳細は正本を読む（ここに複製しない）。
 
 - **AIとGit名義**: AI名義のGit Author / Committer / Co-Authored-Byを使用しない。AIの作業と人間の承認はLOGへ分離記録。既存履歴は変更しない。正本: `dev-conventions/docs/COMMIT_ATTRIBUTION.md`。
 
