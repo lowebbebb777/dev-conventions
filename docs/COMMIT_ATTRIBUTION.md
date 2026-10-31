@@ -12,7 +12,7 @@
 
 ## 手順（対象リポジトリで）
 
-\`\`\`powershell
+```powershell
 git config --show-origin --get user.name
 git config --show-origin --get user.email
 git var GIT_AUTHOR_IDENT
@@ -24,10 +24,10 @@ git config --local user.useConfigOnly true
 python tools/check_commit_attribution.py --current
 # ローカルhook（既存のhookに衝突しない場合だけ）
 python tools/install_commit_hooks.py
-\`\`\`
+```
 
-- ガードの実行モード: \`--current\` は現在の有効名義、\`--message PATH\` はコミット本文、\`--range BASE..HEAD\` は**新規コミット範囲だけ**検査。過去履歴の修正はしない。
-- \`GIT_AUTHOR_NAME\` / \`GIT_COMMITTER_NAME\` の環境変数や \`git -c\` 、\`--author\` で名義が上書きされることがあるため、設定ファイルではなく有効値を見る。
+- ガードの実行モード: `--current` は現在の有効名義、`--message PATH` はコミット本文、`--range BASE..HEAD` は**新規コミット範囲だけ**検査。過去履歴の修正はしない。
+- `GIT_AUTHOR_NAME` / `GIT_COMMITTER_NAME` の環境変数や `git -c` 、`--author` で名義が上書きされることがあるため、設定ファイルではなく有効値を見る。
 - Claude Code側の署名自動挿入は、バージョンに対応する公式設定で無効化する。ただしそれだけではAuthor/Committer設定は直らない。
-- ガードの他repoへのコピー、ローカルhookの導入は対象repoの承認と検証が必要。\`core.hooksPath\` や既存hookがある場合は上書きしない。WindowsのGit設定やGitHub Web/API経由のコミットには**本repoへの規約追加だけでは強制されない**。
-- 本人の明示承認なしに \`git config --global\` を書き換えない。ガードが使えない環境でも人間のレビューで新規コミットを確認する。
+- ガードの他repoへのコピー、ローカルhookの導入は対象repoの承認と検証が必要。`core.hooksPath` や既存hookがある場合は上書きしない。WindowsのGit設定やGitHub Web/API経由のコミットには**本repoへの規約追加だけでは強制されない**。
+- 本人の明示承認なしに `git config --global` を書き換えない。ガードが使えない環境でも人間のレビューで新規コミットを確認する。

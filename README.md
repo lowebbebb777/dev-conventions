@@ -28,8 +28,8 @@ Keep the repo in a state where the next runner can locate the current position b
 
 ## AIによる開発とGit名義
 
-AIをGit Author / Committer / AIのCo-Authored-Byに設定せず、作業記録は \`docs/LOG.md\` に残す。**過去の履歴は変更しない**。正本: [docs/COMMIT_ATTRIBUTION.md](docs/COMMIT_ATTRIBUTION.md)、思想§15。
-ローカル検査: \`tools/check_commit_attribution.py\`（current / message / range）。ローカルhookの非破壊導入: \`tools/install_commit_hooks.py\`。各PC・各repo・GitHub APIには自動適用されない。
+AIをGit Author / Committer / AIのCo-Authored-Byに設定せず、作業記録は `docs/LOG.md` に残す。**過去の履歴は変更しない**。正本: [docs/COMMIT_ATTRIBUTION.md](docs/COMMIT_ATTRIBUTION.md)、思想§15。
+ローカル検査: `tools/check_commit_attribution.py`（current / message / range）。ローカルhookの非破壊導入: `tools/install_commit_hooks.py`。各PC・各repo・GitHub APIには自動適用されない。
 
 ## 4ファイル構成 / The Four Files
 

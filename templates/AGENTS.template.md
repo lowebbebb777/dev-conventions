@@ -45,8 +45,8 @@ If the repo has no tests, say so and write the verification procedure used inste
 
 ## AIとGit名義 / AI Commit Attribution (§15)
 
-- Git Author / Committerには本人が承認した人間や正規bot名義を使用。Claude・Codex・GPT等のAI名義とAIの \`Co-Authored-By\` 自動追加は禁止 / Use only authorized human or real bot identities.
-- Gitの有効名義を検証し、AI作業・人間の承認を \`docs/LOG.md\` に別記。**過去履歴は変更しない** / Check identity; keep history intact.
+- Git Author / Committerには本人が承認した人間や正規bot名義を使用。Claude・Codex・GPT等のAI名義とAIの `Co-Authored-By` 自動追加は禁止 / Use only authorized human or real bot identities.
+- Gitの有効名義を検証し、AI作業・人間の承認を `docs/LOG.md` に別記。**過去履歴は変更しない** / Check identity; keep history intact.
 - 正本: [dev-conventions/docs/COMMIT_ATTRIBUTION.md](https://github.com/lowebbebb777/dev-conventions/blob/main/docs/COMMIT_ATTRIBUTION.md)。
 
 ## 終了時の義務 / End-of-Session Duties

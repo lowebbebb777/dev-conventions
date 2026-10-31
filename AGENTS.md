@@ -52,9 +52,9 @@ python -m unittest discover -s tests -p "test_*.py"
 
 ## AI作業記録とGit名義（§15・必須）
 
-- Git Author / CommitterにClaude・Codex・GPT等のAIを設定しない。AIの \`Co-Authored-By\` を自動挿入しない。本人の承認なしに他人の名義を使わない。
-- コミット前に \`git var GIT_AUTHOR_IDENT\` と \`git var GIT_COMMITTER_IDENT\` を確認する。AIの作業・検証と人間の指示・承認は \`docs/LOG.md\` に分離記録する。
-- **過去の履歴には触れない。** 正本: \`docs/COMMIT_ATTRIBUTION.md\`。ローカル検査ツールは \`tools/check_commit_attribution.py\`。
+- Git Author / CommitterにClaude・Codex・GPT等のAIを設定しない。AIの `Co-Authored-By` を自動挿入しない。本人の承認なしに他人の名義を使わない。
+- コミット前に `git var GIT_AUTHOR_IDENT` と `git var GIT_COMMITTER_IDENT` を確認する。AIの作業・検証と人間の指示・承認は `docs/LOG.md` に分離記録する。
+- **過去の履歴には触れない。** 正本: `docs/COMMIT_ATTRIBUTION.md`。ローカル検査ツールは `tools/check_commit_attribution.py`。
 
 ## 終了時の義務
 
