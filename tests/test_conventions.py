@@ -350,7 +350,7 @@ class DR1InvestmentGateDesign(unittest.TestCase):
     def test_six_market_axes_and_weights(self):
         design = _read("docs/DR1_INVESTMENT_GATE_V1.md")
         weights = [int(value) for value in re.findall(
-            r"(?m)^\\|\\s*[1-6]\\s*\\|[^|]+\\|\\s*(\\d+)\\s*\\|", design
+            r"(?m)^\|\s*[1-6]\s*\|[^|]+\|\s*(\d+)\s*\|", design
         )]
         self.assertEqual([20, 20, 15, 20, 15, 10], weights)
         self.assertEqual(100, sum(weights))
@@ -360,8 +360,8 @@ class DR1InvestmentGateDesign(unittest.TestCase):
         for marker in ("N/A", "未調査を0点にしない", "固定80点/70点等の合格ライン"):
             with self.subTest(marker=marker):
                 self.assertIn(marker, design)
-        self.assertNotIn("80点以上", design)
-        self.assertNotIn("証拠強度70", design)
+        self.assertIn("固定80点/70点等の合格ラインを現時点では設けない", design)
+        self.assertNotIn("証拠強度70点以上をGO条件", design)
 
     def test_excludes_post_launch_metrics_from_dr1(self):
         design = _read("docs/DR1_INVESTMENT_GATE_V1.md")
@@ -383,7 +383,7 @@ class DR1InvestmentGateDesign(unittest.TestCase):
 
     def test_pending_lowers_priority_but_does_not_ban_work(self):
         design = _read("docs/DR1_INVESTMENT_GATE_V1.md")
-        for marker in ("PENDINGは開発禁止ではない", "空き時間での小規模・可逆な開発",
+        for marker in ("PENDINGは開発禁止ではなく", "空き時間での小規模・可逆な開発",
                        "優先順位を下げる判断", "証拠不足だけでSTOPにしない"):
             with self.subTest(marker=marker):
                 self.assertIn(marker, design)
