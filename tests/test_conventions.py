@@ -308,7 +308,6 @@ class DesignReviewGates(unittest.TestCase):
             self.assertIn(field, record)
 
 
-if __name__ == "__main__":
 class MultiAgentDesignReview(unittest.TestCase):
     """思想正本§17が全AI入口とDR記録テンプレートへ届くことを静的検証する。"""
 

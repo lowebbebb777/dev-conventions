@@ -129,7 +129,6 @@ class AuthorityContract(unittest.TestCase):
         self.assertIn("§16.4", agents)
         self.assertIn("PENDING", agents)
 
-if __name__ == "__main__":
     def test_multi_agent_dr_policy_is_referenced(self):
         """配布先の入口が独立評価・相互批判・ユーザー最終決定を引き継ぐ。"""
         agents = _read("AGENTS.md")
