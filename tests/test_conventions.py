@@ -344,5 +344,45 @@ class MultiAgentDesignReview(unittest.TestCase):
                 self.assertIn(marker, record)
 
 
+class DR1InvestmentGateDesign(unittest.TestCase):
+    """DR1専用の投資ゲート設計と全AI入口の参照を静的検査する。"""
+
+    def test_design_has_score_evidence_and_mandatory_gates(self):
+        design = _read("docs/DR1_INVESTMENT_GATE_V1.md")
+        for marker in (
+            "Version: 1.0 proposal", "設計レビュー待ち", "ユーザーの意見も例外なく検証",
+            "事業魅力度スコア", "証拠強度", "一次証拠カバレッジ",
+            "80点", "70点", "G0", "G9", "有償需要", "機会費用",
+            "5年間", "CONDITIONAL GOを使用しない", "override_pass",
+            "管理者権限", "DR2", "DR1のみ",
+        ):
+            with self.subTest(marker=marker):
+                self.assertIn(marker, design)
+
+    def test_weights_sum_to_one_hundred(self):
+        design = _read("docs/DR1_INVESTMENT_GATE_V1.md")
+        weights = [int(value) for value in re.findall(
+            r"(?m)^\|\s*[1-8]\s*\|[^|]+\|\s*(\d+)\s*\|", design
+        )]
+        self.assertEqual([15, 10, 15, 20, 15, 10, 10, 5], weights)
+        self.assertEqual(100, sum(weights))
+
+    def test_dr1_gate_is_referenced_from_all_entries(self):
+        for path in ("README.md", "AGENTS.md", "templates/AGENTS.template.md",
+                     "global-pointer.md", "docs/DEVELOPMENT_PHILOSOPHY.md"):
+            with self.subTest(path=path):
+                self.assertIn("DR1_INVESTMENT_GATE_V1.md", _read(path))
+
+    def test_dr1_record_template_is_separate_and_complete(self):
+        path = "templates/docs/DR1_INVESTMENT_GATE_RECORD.template.md"
+        self.assertTrue((ROOT / path).is_file())
+        record = _read(path)
+        for marker in ("事前登録", "仮説台帳", "証拠台帳", "100点スコアカード",
+                       "必須ゲート", "独立AIレビュー", "機械算出判定",
+                       "CONDITIONAL GOを使わない"):
+            with self.subTest(marker=marker):
+                self.assertIn(marker, record)
+
+
 if __name__ == "__main__":
     unittest.main()

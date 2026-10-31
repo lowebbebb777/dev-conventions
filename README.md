@@ -36,6 +36,7 @@ Keep the repo in a state where the next runner can locate the current position b
 - [DR審査記録テンプレート](templates/docs/DR_RECORD.template.md) は任意導入。既存の4ファイルと承認ゲートは維持する。
 
 - **事業投資ゲート（思想正本 §16.4）:**「市場に勝てる余地があるから作る。作りたいから市場を探すのではない」。新規製品・市場参入は市場/収益/継続性/機会費用を数値で審査し、証拠不足は `PENDING` として次工程へ進まない。
+- **DR1専用の詳細設計:** [DR1 Investment Gate v1.0（設計レビュー待ち）](docs/DR1_INVESTMENT_GATE_V1.md)。100点採点・証拠強度・必須ゲート・CI強制の設計を定義。正式採用前のため、現時点では閾値を有効化していない。
 
 ## 複数AIによる独立設計審査（§17）
 

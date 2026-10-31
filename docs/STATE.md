@@ -1,29 +1,32 @@
 # STATE — 現在地 / Current Position
 
-最終更新 / Last updated: 2026-11-01 GPT（§17 PR #1 main統合）
+最終更新 / Last updated: 2026-11-01 GPT（DR1 Investment Gate v1.0設計PR作成）
 
 ## 検証済みの事実
-- 思想正本§17「複数AIによる独立設計審査」を追加し、PR #1をmainへsquash merge済み。
-- Merge commit: 6808b7ce1737565dd2aa0412fdea457117df7af2。
-- mainから変更10ファイルを読み戻し、§17・各AI入口・DRテンプレート・テスト配置を確認済み。
-- DR記録テンプレートの見出し重複を修正。テストクラスはmain guard前、配布テストはAuthorityContract内へ配置。
-- GitHub Actions workflow runsなし。CodeRabbitは自動レビュー対象外（star数条件）。
+- §16.4/§17を正本とするDR1専用投資審査の詳細設計案を作成。
+- 配点8軸・100点、証拠等級E0-E4、独立した証拠強度、必須ゲートG0-G9を定義。
+- DR1はCONDITIONAL GOなし。必須ゲート未達・証拠不足はGO不可。
+- 専用記録テンプレートと静的テスト案を追加。
+- 作業ブランチ: feature/dr1-investment-gate-v1-20261101。
+- 本変更は設計案のみ。採点スクリプト、CI、rulesetは未実装。
 
 ## 文書の優先順位
-権限・思想: docs/DEVELOPMENT_PHILOSOPHY.md。引継ぎ: README > global-pointer > STATE。
+思想: docs/DEVELOPMENT_PHILOSOPHY.md。詳細設計: docs/DR1_INVESTMENT_GATE_V1.md（未発効）。
 
 ## アイディア棚
-docs/IDEAS.md — 着手前に関連語で grep。通読しない。
+docs/IDEAS.md — 着手前に関連語でgrep。通読しない。
 
 ## 残作業（優先順）
-1. Python全回帰と新規テストの旧版FAIL逆検証（NOT_RUN）。
-2. Claude独立レビュー・ユーザー受入・§17の実運用評価（NOT_RUN）。
-3. RevoAim等の重要DRで独立評価→相互批判→再評価を試行。
-4. 他repoへの展開は個別判断。自動展開しない。
+1. PR差分の独立レビュー・ユーザー確認・閾値の校正。
+2. 設計承認後、採点スクリプト/JSON schema/負例テストを実装。
+3. GitHub required check・ruleset・独立承認者を設定。
+4. RevoAim DR1を新制度で再審査。現在の判定はPENDING。
 
 ## 未検証項目
-- Pythonテスト実行・旧版FAIL逆検証はNOT_RUN（CIなし、実cloneで未実行）。
-- Claude独立レビュー、実運用受入、他repo適用はNOT_RUN。
+- Python全回帰・新規テストの旧版FAIL逆検証はNOT_RUN。
+- Claude独立レビュー・CI強制力・GitHub rulesetはNOT_RUN。
+- 80点/証拠強度70点/一次証拠カバレッジ70%は設計初期値で、正式採用前の校正が必要。
 
 ## 着手禁止
-- なし
+- DR1 Investment Gate v1.0の正式運用・RevoAimへの採点適用（設計承認前）。
+- 採点スクリプト/CIの実装（Phase Aの設計承認後）。

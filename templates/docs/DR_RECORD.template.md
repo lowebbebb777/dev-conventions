@@ -18,6 +18,8 @@
 
 ## 市場性・事業性（DR1/大きな投資判断で必須。それ以外は該当なし）
 
+- DR1の場合は専用記録テンプレート [DR1_INVESTMENT_GATE_RECORD.template.md](DR1_INVESTMENT_GATE_RECORD.template.md) と詳細設計 docs/DR1_INVESTMENT_GATE_V1.md を優先する。
+
 - 対象顧客・到達可能な市場規模・出典/取得日/TAMだけに依存していないか:
 - 顧客課題・需要の証拠、競合/代替手段、価格、差別化の根拠:
 - 収益モデル・価格・課金率・継続率/解約率・CAC・ARPU/LTV・粗利・損益分岐点:
