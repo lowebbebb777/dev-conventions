@@ -360,7 +360,7 @@ class DR1InvestmentGateDesign(unittest.TestCase):
         for marker in ("N/A", "未調査を0点にしない", "固定80点/70点等の合格ライン"):
             with self.subTest(marker=marker):
                 self.assertIn(marker, design)
-        self.assertIn("固定80点/70点等の合格ラインを現時点では設けない", design)
+        self.assertIn("固定合格ラインを現時点では設けない", design)
         self.assertNotIn("証拠強度70点以上をGO条件", design)
 
     def test_excludes_post_launch_metrics_from_dr1(self):
