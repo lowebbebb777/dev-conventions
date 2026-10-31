@@ -382,6 +382,20 @@ class DR1InvestmentGateDesign(unittest.TestCase):
             with self.subTest(marker=marker):
                 self.assertIn(marker, design)
 
+    def test_owner_precommit_and_two_ai_no_rule(self):
+        design = _read("docs/DR1_INVESTMENT_GATE_V1.md")
+        for marker in ("ユーザーはGPT・Claudeの初回評価を見る前に",
+                       "EXPOSED", "両方とも非GO", "暫定PENDING",
+                       "重大な反対理由を一件ずつ", "自動STOPではない"):
+            with self.subTest(marker=marker):
+                self.assertIn(marker, design)
+        owner = _read("templates/docs/DR1_OWNER_PRECOMMIT_SCORECARD.template.md")
+        for marker in ("BLIND_PRECOMMIT", "PARTIALLY_EXPOSED",
+                       "初回記録を後から上書きしない",
+                       "Claude評価への事前接触", "両AIが非GOだった場合"):
+            with self.subTest(owner_marker=marker):
+                self.assertIn(marker, owner)
+
     def test_pending_lowers_priority_but_does_not_ban_work(self):
         design = _read("docs/DR1_INVESTMENT_GATE_V1.md")
         for marker in ("PENDINGは開発禁止ではなく", "空き時間での小規模・可逆な開発",
