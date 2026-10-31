@@ -309,3 +309,12 @@
 - 検証: main HEADと対象ファイルをGitHubから取得し、登録行・remote URL・正典パス・STATE 50行以内を静的確認。RevoAim側の作業ブランチcommitは `e0fe046e04857df85fac19ce48065847e7912a71`。dev-conventionsのPythonテスト・逆検証・独立レビューはNOT_RUN。
 - 申し送り: RevoAimの上流設計はDR1/DR2統合ドラフト。ユーザー確認後にDR3へ進む。dev-conventions全テストと独立レビューは実clone環境で行う。
 
+---
+
+## 2026-10-31 GPT（GitHub接続）— RevoAim DR3移行登録
+
+- ユーザー指示: DR1/DR2の構想を踏まえ、現在はDR3段階。技術実装とユーザー志向の実現策を並行して進める。
+- 実施: RevoAimをDR3進行中へ更新。新しい製品原則「ドメイン知識 × 数値解析 = 新しい発見と知的な楽しさ」を反映したDR3詳細設計 `docs/DR3_EXPERIENCE_AND_IMPLEMENTATION.md` を登録し、projects.mdの正典ポインタとSTATEを更新。
+- 検証: RevoAim作業ブランチHEAD `13b7f42864455d2ca5ab9bd9465a18f3f914de37`、DR3文書・STATE・IDEAS・テストの存在をGitHubから再取得して確認。Pythonテスト・逆検証・独立レビュー・ユーザー評価はNOT_RUN。
+- 逸脱: dev-conventions/RevoAimのmain変更、PR作成、製品コード変更は行わない。
+- 次: RevoAimの最小縦切りを設計・実装し、数値の正しさと「発見の楽しさ」を別々に検証する。

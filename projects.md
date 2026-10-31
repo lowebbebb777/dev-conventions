@@ -18,7 +18,7 @@ AIが「どのプロジェクトを引き継ぐか」を選ぶための一覧。
 | LLLM(小型ローカルLLM研究・DeltaFEM) | `C:\Users\soich\PycharmProjects\LLLM` | github.com/lowebbebb777/LLLM | `README.md` → `docs/STATE.md` → `deltafem/RESEARCH_PLAN.md` |
 | gbmc(GBMesh Code・ローカルLLMコーディングエージェント) | `C:\Users\soich\PycharmProjects\gbmesh-code` | github.com/lowebbebb777/gbmesh-code | `AGENTS.md` → `docs/STATE.md` → `docs/UX_RELIABILITY/README.md` |
 
-| RevoAim（統計的問題解決支援） | `(clone先未固定)` | github.com/lowebbebb777/RevoAim | `AGENTS.md` → `docs/STATE.md` → `docs/UPSTREAM_DESIGN.md` |
+| RevoAim（統計的問題解決支援） | `(clone先未固定)` | github.com/lowebbebb777/RevoAim | `AGENTS.md` → `docs/STATE.md` → `docs/UPSTREAM_DESIGN.md` → `docs/DR3_EXPERIENCE_AND_IMPLEMENTATION.md` |
 | Ideas(RUNOVA Labs横断アイデア保管庫) | `(clone先未固定)` | github.com/lowebbebb777/Ideas | `README.md` → `docs/STATE.md` → `ideas/<slug>/IDEA.md` |
 
 <!-- 新規プロジェクトは1行追加するだけ。詳細は各repoのSTATE/LOGが持つ。
