@@ -260,5 +260,35 @@ class CommitAttributionPolicy(unittest.TestCase):
             self.assertTrue((ROOT / path).is_file())
 
 
+
+class DesignReviewGates(unittest.TestCase):
+    """DR段階と入口・任意テンプレの整合だけを静的検証。審査の実在や承認は保証しない。"""
+
+    def test_canonical_stages_and_separate_shipment(self):
+        philosophy = _read("docs/DEVELOPMENT_PHILOSOPHY.md")
+        self.assertIn("## 16. Design Review", philosophy)
+        for stage in ("DR0", "DR1", "DR2", "DR3", "DR4", "DR5", "DR6"):
+            with self.subTest(stage=stage):
+                self.assertIn(f"**{stage}**", philosophy)
+        for rule in ("初回出荷審査", "DR123", "CONDITIONAL GO", "REWORK",
+                     "Verification", "Validation", "前工程への差戻し", "軽量DR",
+                     "最終ゲート通過"):
+            with self.subTest(rule=rule):
+                self.assertIn(rule, philosophy)
+
+    def test_dr_reachable_from_entries_and_record_template(self):
+        for file in ("AGENTS.md", "templates/AGENTS.template.md", "README.md", "global-pointer.md"):
+            with self.subTest(file=file):
+                body = _read(file)
+                self.assertIn("DR123", body)
+                self.assertIn("初回出荷審査", body)
+        path = "templates/docs/DR_RECORD.template.md"
+        self.assertTrue((ROOT / path).is_file())
+        record = _read(path)
+        for field in ("DR0", "DR6", "初回出荷審査", "段階別判断",
+                      "判定根拠", "独立レビュー", "未解決課題", "docs/LOG.md"):
+            self.assertIn(field, record)
+
+
 if __name__ == "__main__":
     unittest.main()

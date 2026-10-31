@@ -26,6 +26,15 @@ Keep the repo in a state where the next runner can locate the current position b
 `docs/IDEAS.md`（棚）。引継ぎの既存優先順位は README > global-pointer > STATE。
 明示されたユーザー指示と承認済みの実装契約を、一般規約で上書きしない。
 
+## 商品開発のDesign Review（DR0〜DR6）
+
+[思想正本 §16](docs/DEVELOPMENT_PHILOSOPHY.md) に **DR0 アイディア → DR1 商品企画・要求（市場・差別化） → DR2 構想設計 → DR3 詳細設計 → DR4 実装・検証 → DR5 リリース・運用準備 → 初回出荷審査（出荷前の別途承認） → DR6 商品ライフサイクル審査** を定義。
+
+- DR123等の統合審査を許可。ただし段階ごとの判断と証拠を残す。
+- DR4→DR2/DR3等の差戻し、試作やアジャイル反復を正規の開発経路とする。
+- 小さな修正は変更リスクに見合う軽量DR・既存テストでよい。正式な初回出荷審査は初出荷時の明示的判断で、通常の更新は別のリスク別リリース審査。
+- [DR審査記録テンプレート](templates/docs/DR_RECORD.template.md) は任意導入。既存の4ファイルと承認ゲートは維持する。
+
 ## AIによる開発とGit名義
 
 AIをGit Author / Committer / AIのCo-Authored-Byに設定せず、作業記録は `docs/LOG.md` に残す。**過去の履歴は変更しない**。正本: [docs/COMMIT_ATTRIBUTION.md](docs/COMMIT_ATTRIBUTION.md)、思想§15。

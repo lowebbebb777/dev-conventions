@@ -43,6 +43,13 @@ If the repo has no tests, say so and write the verification procedure used inste
 - 最優先目標とぶつかる新案には**根拠を示してユーザーへ忠告**する。最終判断はユーザー。AIは独断でスコープを変更しない / Warn respectfully, user decides.
 - 安全・品質・法令・権利・データ保全・必要な実機評価を安易に捨てない。正本: `docs/DEVELOPMENT_PHILOSOPHY.md` §14。
 
+## Design Review / DR Gate (§16, required)
+
+- 共通正本: [Design Review §16](https://github.com/lowebbebb777/dev-conventions/blob/main/docs/DEVELOPMENT_PHILOSOPHY.md)。**DR0（アイディア）/DR1（商品企画・要求）/DR2（構想）/DR3（詳細）/DR4（実装・検証）/DR5（リリース準備）/初回出荷審査（別途承認）/DR6（ライフサイクル）** をリスクに応じて適用する。
+- **DR123等の統合審査**や設計への差戻し・反復を認める。ただしDR別の証拠と判定を残す / Combined reviews and agile rework are allowed, with per-stage evidence.
+- 小さな変更は軽量DR／既存レビュー・テストでよい。重大リスクと受入・出荷の権限ゲートを省略しない / Scale depth to risk; never self-approve shipping.
+- 任意記録テンプレート: `dev-conventions/templates/docs/DR_RECORD.template.md`。DR審査とユーザー最終承認を混同しない。
+
 ## AIとGit名義 / AI Commit Attribution (§15)
 
 - Git Author / Committerには本人が承認した人間や正規bot名義を使用。Claude・Codex・GPT等のAI名義とAIの `Co-Authored-By` 自動追加は禁止 / Use only authorized human or real bot identities.

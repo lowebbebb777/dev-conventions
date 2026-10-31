@@ -115,5 +115,12 @@ class AuthorityContract(unittest.TestCase):
         self.assertEqual([], legacy, "AGENTS.mdに一本化し、CLAUDE.mdを作らない")
 
 
+
+    def test_design_review_entry(self):
+        """配布先の入口がDR審査と別途出荷承認を忘れないこと。"""
+        agents = _read("AGENTS.md")
+        for rule in ("DR0", "DR6", "DR123", "初回出荷審査"):
+            self.assertIn(rule, agents)
+
 if __name__ == "__main__":
     unittest.main()
