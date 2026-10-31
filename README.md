@@ -26,6 +26,11 @@ Keep the repo in a state where the next runner can locate the current position b
 `docs/IDEAS.md`（棚）。引継ぎの既存優先順位は README > global-pointer > STATE。
 明示されたユーザー指示と承認済みの実装契約を、一般規約で上書きしない。
 
+## AIによる開発とGit名義
+
+AIをGit Author / Committer / AIのCo-Authored-Byに設定せず、作業記録は \`docs/LOG.md\` に残す。**過去の履歴は変更しない**。正本: [docs/COMMIT_ATTRIBUTION.md](docs/COMMIT_ATTRIBUTION.md)、思想§15。
+ローカル検査: \`tools/check_commit_attribution.py\`（current / message / range）。ローカルhookの非破壊導入: \`tools/install_commit_hooks.py\`。各PC・各repo・GitHub APIには自動適用されない。
+
 ## 4ファイル構成 / The Four Files
 
 | ファイル / File | 性質 / Nature | 読む頻度 / Read | 役割 / Role |

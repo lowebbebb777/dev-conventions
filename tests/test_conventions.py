@@ -249,5 +249,16 @@ class ValueFirstScopePruning(unittest.TestCase):
         self.assertIn("逐語原文＋詩文", ideas)
 
 
+class CommitAttributionPolicy(unittest.TestCase):
+    def test_attribution_policy_links(self):
+        self.assertIn("## 15. Gitコミット名義とAI作業実績の分離",
+                      _read("docs/DEVELOPMENT_PHILOSOPHY.md"))
+        for path in ("AGENTS.md", "README.md", "templates/AGENTS.template.md", "global-pointer.md"):
+            self.assertIn("COMMIT_ATTRIBUTION.md", _read(path))
+        for path in ("docs/COMMIT_ATTRIBUTION.md", "tools/check_commit_attribution.py",
+                     "tools/install_commit_hooks.py"):
+            self.assertTrue((ROOT / path).is_file())
+
+
 if __name__ == "__main__":
     unittest.main()

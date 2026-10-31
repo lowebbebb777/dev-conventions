@@ -278,3 +278,12 @@
 - 検証 / Verification: 全更新対象の既存本文をGitHubから取得し既存内容を保持。追加した§14・入口・didの原文・タグを静的確認。新規テストの逆検証は修正前に§14が無いことの文字列チェックのみであり、**実cloneでのPythonユニットテスト・逆検証・独立レビューは NOT_RUN**。
 - 次の一手: 実cloneの規約全テストと必要な逆検証、別担当の独立レビュー、グローバル設定への貼付け（ユーザー作業）、実際の提案・開発で作業削減の効果を確認する。
 - 追加整合（同日）: `global-pointer.md` の旧「didは詩だけ」を現行の逐語原文＋詩文＋具体タグへ統一し、`docs/IDEAS.md` の冒頭説明とテストを整合。詩だけの旧12件はそのまま保持。検証はGitHub上の静的比較のみ、Python実行はNOT_RUN。
+
+---
+
+## 2026-10-31 GPT — AI作業とGitコミット名義の分離
+
+- ユーザー指示: 今後のAI名義・AI共同作成者登録を停止、dev-conventionsを共通ルール化。過去の履歴は何もしない。
+- 変更: 思想§15、COMMIT_ATTRIBUTION、AGENTS/配布テンプレ/README/グローバルポインタ、名義・共同作成者を検証するPythonガード、安全hook導入ツール、正負テスト、STATE。
+- 既存履歴: amend/rebase/force push等は一切行わない。他リポジトリのファイルやWindows/Git/Claude設定も触れない。
+- 検証: ファイルの静的整合とガードの正負ケースを設計。実clone上のPython unittest、独立レビュー、Windows実機hook試験はNOT_RUN。導入するrepo側で検証が必要。GitHub Web/APIコミットはローカルhookを通らない。

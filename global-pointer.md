@@ -27,6 +27,8 @@ Paste only the text below into each AI tool's global settings. Never paste the c
 
 - 新しい開発を始める前に、dev-conventions `docs/DEVELOPMENT_PHILOSOPHY.md` §14 に従い、ユーザー価値・重複・捨てる仕事・リリースへの影響を確認する。優先目標を阻む場合はユーザーに忠告し、決定権を奪わない。
 
+- **AIとGit名義**: AI名義のGit Author / Committer / Co-Authored-Byを使用しない。AIの作業と人間の承認はLOGへ分離記録。既存履歴は変更しない。正本: \`dev-conventions/docs/COMMIT_ATTRIBUTION.md\`。
+
 ## ショートカット(合言葉・全AI共通)/ Shortcuts
 - **ds = 引継ぎする**: 今いる repo の `docs/STATE.md`(無ければ `AGENTS.md`)を読み、
   「残作業」の最上位から着手する。区切りではその repo の `AGENTS.md`「終了時の義務」に従う。

@@ -43,6 +43,12 @@ If the repo has no tests, say so and write the verification procedure used inste
 - 最優先目標とぶつかる新案には**根拠を示してユーザーへ忠告**する。最終判断はユーザー。AIは独断でスコープを変更しない / Warn respectfully, user decides.
 - 安全・品質・法令・権利・データ保全・必要な実機評価を安易に捨てない。正本: `docs/DEVELOPMENT_PHILOSOPHY.md` §14。
 
+## AIとGit名義 / AI Commit Attribution (§15)
+
+- Git Author / Committerには本人が承認した人間や正規bot名義を使用。Claude・Codex・GPT等のAI名義とAIの \`Co-Authored-By\` 自動追加は禁止 / Use only authorized human or real bot identities.
+- Gitの有効名義を検証し、AI作業・人間の承認を \`docs/LOG.md\` に別記。**過去履歴は変更しない** / Check identity; keep history intact.
+- 正本: [dev-conventions/docs/COMMIT_ATTRIBUTION.md](https://github.com/lowebbebb777/dev-conventions/blob/main/docs/COMMIT_ATTRIBUTION.md)。
+
 ## 終了時の義務 / End-of-Session Duties
 
 このリポジトリは複数エージェントのリレーで開発されている。記録が次走者の命綱 / This repo is developed in relay by multiple agents. The record is the next runner's lifeline.

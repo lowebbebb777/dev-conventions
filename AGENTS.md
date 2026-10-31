@@ -50,6 +50,12 @@ python -m unittest discover -s tests -p "test_*.py"
 - レビュー担当が自分で修正した差分は、別担当者の独立検証を要する。自己確認・テスト PASS のみで受入済みにしない。
 - 並行作業はファイル・変更範囲・ブランチ・依存関係を分離して競合を回避する。問題発見 → 修正 → 再テスト → 独立再検証を反復可能とする。
 
+## AI作業記録とGit名義（§15・必須）
+
+- Git Author / CommitterにClaude・Codex・GPT等のAIを設定しない。AIの \`Co-Authored-By\` を自動挿入しない。本人の承認なしに他人の名義を使わない。
+- コミット前に \`git var GIT_AUTHOR_IDENT\` と \`git var GIT_COMMITTER_IDENT\` を確認する。AIの作業・検証と人間の指示・承認は \`docs/LOG.md\` に分離記録する。
+- **過去の履歴には触れない。** 正本: \`docs/COMMIT_ATTRIBUTION.md\`。ローカル検査ツールは \`tools/check_commit_attribution.py\`。
+
 ## 終了時の義務
 
 <!-- 2026-07-30 のコミットで本節が省トークン規約に置き換わり削除されていたが、
