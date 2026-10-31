@@ -50,8 +50,8 @@ If the repo has no tests, say so and write the verification procedure used inste
 - 小さな変更は軽量DR／既存レビュー・テストでよい。重大リスクと受入・出荷の権限ゲートを省略しない / Scale depth to risk; never self-approve shipping.
 - 任意記録テンプレート: `dev-conventions/templates/docs/DR_RECORD.template.md`。DR審査とユーザー最終承認を混同しない。
 
-- **事業投資ゲート（共通思想 §16.4・必須）:** 新規製品/市場参入/大きな投資は、市場性・収益性・長期継続性・開発時間の機会費用を数値と根拠で審査する。「作りたいから市場を探す」のは禁止。証拠不足は `PENDING` であり、次の正式な開発段階へ進めない。詳細は共通思想 §16.4。
-- **DR1 Investment Gate:** 詳細設計は [DR1 Investment Gate v1.0](https://github.com/lowebbebb777/dev-conventions/blob/main/docs/DR1_INVESTMENT_GATE_V1.md)。設計レビュー待ちの間は正式GO基準として扱わない。採用後もDR1専用であり、DR2〜DR6へ一律適用しない。
+- **事業投資ゲート（共通思想 §16.4・必須）:** DR1は市場参入価値を6軸・100点で評価する。未調査はN/A、証拠不足は原則PENDING。PENDINGは優先順位を下げる判断であり、空き時間の小規模開発や既存承認済み作業を一律禁止しない。販売実績・CAC・継続率・提供実現性はDR1の採点対象外。
+- **DR1 Investment Gate:** 詳細設計は [DR1 Investment Gate v1.0](https://github.com/lowebbebb777/dev-conventions/blob/main/docs/DR1_INVESTMENT_GATE_V1.md)。改定レビュー待ち。固定合格点は置かず、3者の平均点は参考値として扱う。採用後もDR1専用。
 
 ## 複数AIによる独立設計審査（§17・重要DR）
 

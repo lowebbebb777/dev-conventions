@@ -345,47 +345,57 @@ class MultiAgentDesignReview(unittest.TestCase):
 
 
 class DR1InvestmentGateDesign(unittest.TestCase):
-    """DR1専用の投資ゲート設計と全AI入口の参照を静的検査する。"""
+    """DR1が市場参入審査に限定され、後続段階の指標を混ぜないことを静的検査。"""
 
-    def test_design_has_score_evidence_and_mandatory_gates(self):
+    def test_six_market_axes_and_weights(self):
         design = _read("docs/DR1_INVESTMENT_GATE_V1.md")
-        for marker in (
-            "Version: 1.0 proposal", "設計レビュー待ち", "ユーザーの意見も例外なく検証",
-            "事業魅力度スコア", "証拠強度", "一次証拠カバレッジ",
-            "80点", "70点", "G0", "G9", "有償需要", "機会費用",
-            "5年間", "CONDITIONAL GOを使用しない", "override_pass",
-            "個別の「GOにして」という指示で上書きしない",
-            "管理者権限", "DR2", "DR1のみ",
-        ):
+        weights = [int(value) for value in re.findall(
+            r"(?m)^\\|\\s*[1-6]\\s*\\|[^|]+\\|\\s*(\\d+)\\s*\\|", design
+        )]
+        self.assertEqual([20, 20, 15, 20, 15, 10], weights)
+        self.assertEqual(100, sum(weights))
+
+    def test_unknown_is_not_zero_and_no_arbitrary_cutoff(self):
+        design = _read("docs/DR1_INVESTMENT_GATE_V1.md")
+        for marker in ("N/A", "未調査を0点にしない", "固定80点/70点等の合格ライン"):
+            with self.subTest(marker=marker):
+                self.assertIn(marker, design)
+        self.assertNotIn("80点以上", design)
+        self.assertNotIn("証拠強度70", design)
+
+    def test_excludes_post_launch_metrics_from_dr1(self):
+        design = _read("docs/DR1_INVESTMENT_GATE_V1.md")
+        self.assertIn("自社製品の有料購入者数", design)
+        self.assertIn("CAC", design)
+        self.assertIn("継続率", design)
+        self.assertIn("提供能力", design)
+        self.assertIn("DR1の採点対象にしないもの", design)
+        for marker in ("顧客課題の深刻度", "市場規模・成長性", "競合・代替手段",
+                       "差別化余地・勝ち筋", "収益ポテンシャル", "市場の長期持続性"):
+            with self.subTest(axis=marker):
+                self.assertIn(marker, design)
+
+    def test_three_person_average_is_reference_only(self):
+        design = _read("docs/DR1_INVESTMENT_GATE_V1.md")
+        for marker in ("GPT・Claude・ユーザー", "平均、中央値", "平均点だけでGO/STOPを決めない"):
             with self.subTest(marker=marker):
                 self.assertIn(marker, design)
 
-    def test_weights_sum_to_one_hundred(self):
+    def test_pending_lowers_priority_but_does_not_ban_work(self):
         design = _read("docs/DR1_INVESTMENT_GATE_V1.md")
-        weights = [int(value) for value in re.findall(
-            r"(?m)^\|\s*[1-8]\s*\|[^|]+\|\s*(\d+)\s*\|", design
-        )]
-        self.assertEqual([15, 10, 15, 20, 15, 10, 10, 5], weights)
-        self.assertEqual(100, sum(weights))
+        for marker in ("PENDINGは開発禁止ではない", "空き時間での小規模・可逆な開発",
+                       "優先順位を下げる判断", "証拠不足だけでSTOPにしない"):
+            with self.subTest(marker=marker):
+                self.assertIn(marker, design)
 
-    def test_dr1_gate_is_referenced_from_all_entries(self):
+    def test_dr1_references_and_record_template(self):
         for path in ("README.md", "AGENTS.md", "templates/AGENTS.template.md",
                      "global-pointer.md", "docs/DEVELOPMENT_PHILOSOPHY.md"):
             with self.subTest(path=path):
                 self.assertIn("DR1_INVESTMENT_GATE_V1.md", _read(path))
-        for path in ("README.md", "AGENTS.md", "templates/AGENTS.template.md",
-                     "docs/DEVELOPMENT_PHILOSOPHY.md"):
-            with self.subTest(non_bypass=path):
-                self.assertIn("個別の「GOにして」という指示で上書きしない", _read(path))
-
-    def test_dr1_record_template_is_separate_and_complete(self):
-        path = "templates/docs/DR1_INVESTMENT_GATE_RECORD.template.md"
-        self.assertTrue((ROOT / path).is_file())
-        record = _read(path)
-        for marker in ("事前登録", "仮説台帳", "証拠台帳", "100点スコアカード",
-                       "必須ゲート", "独立AIレビュー", "機械算出判定",
-                       "CONDITIONAL GOを使わない"):
-            with self.subTest(marker=marker):
+        record = _read("templates/docs/DR1_INVESTMENT_GATE_RECORD.template.md")
+        for marker in ("6軸スコアカード", "N/A", "3者独立評価", "PENDINGの場合の優先順位"):
+            with self.subTest(record_marker=marker):
                 self.assertIn(marker, record)
 
 

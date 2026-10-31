@@ -28,8 +28,8 @@ Paste only the text below into each AI tool's global settings. Never paste the c
 - 新しい開発を始める前に、dev-conventions `docs/DEVELOPMENT_PHILOSOPHY.md` §14 に従い、ユーザー価値・重複・捨てる仕事・リリースへの影響を確認する。優先目標を阻む場合はユーザーに忠告し、決定権を奪わない。
 
 - 商品開発のDR（デザインレビュー）は `dev-conventions/docs/DEVELOPMENT_PHILOSOPHY.md` §16 が正本。DR123等の統合審査・差戻し・軽量DRを許容し、初回出荷審査は別途承認とする。
-- **投資判断の鉄則（§16.4）:** 市場に勝てる余地を数値と証拠で確認してから作る。新規製品/市場参入の証拠不足は `PENDING` とし、次工程へ進めない。機会費用・長期継続性も評価する。詳細は正本を読む（ここに複製しない）。
-- **DR1 Investment Gate:** DR1専用の100点採点・証拠強度・必須ゲートの詳細設計は `dev-conventions/docs/DR1_INVESTMENT_GATE_V1.md`。設計レビュー待ちの版を正式GO基準として先行運用しない。
+- **投資判断の鉄則（§16.4）:** DR1は市場参入価値を6軸・100点で評価する。未調査はN/A、証拠不足は原則PENDING。PENDINGは優先順位を下げる判断であり、開発禁止ではない。販売実績・CAC・継続率・提供実現性はDR1の採点対象外。
+- **DR1 Investment Gate:** 3者独立採点・相互批判・平均点の参考表示・PENDING運用の詳細は `dev-conventions/docs/DR1_INVESTMENT_GATE_V1.md`。改定レビュー待ちであり、DR1以外へ一律適用しない。
 - **複数AIによる独立DR（§17）:** 重要な正式DRではGPT・Claude等が相手の初回結論を見る前に独立評価し、その後に根拠付きで相互批判する。反対意見を残し、ユーザーの意見も検証する。多数決・AI間の合意で決めず、最終決定はユーザー。軽微な作業に3者DRを強制しない。詳細は正本 §17（本文をここへ複製しない）。
 
 

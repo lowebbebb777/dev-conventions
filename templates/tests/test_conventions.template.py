@@ -136,11 +136,15 @@ class AuthorityContract(unittest.TestCase):
             self.assertIn(marker, agents)
 
 
-    def test_dr1_investment_gate_is_referenced(self):
-        """新規repoの入口からDR1専用の投資審査仕様へ到達できる。"""
+    def test_dr1_investment_gate_is_market_scoped(self):
+        """DR1は市場参入審査であり、後続の販売・運用指標を混ぜない。"""
         agents = _read("AGENTS.md")
         self.assertIn("DR1 Investment Gate", agents)
         self.assertIn("PENDING", agents)
+        design = _read("docs/DR1_INVESTMENT_GATE_V1.md")
+        self.assertIn("6評価軸", design)
+        self.assertIn("未調査を0点にしない", design)
+        self.assertIn("PENDINGは開発禁止ではない", design)
 
 
 if __name__ == "__main__":
