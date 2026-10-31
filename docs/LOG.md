@@ -287,3 +287,13 @@
 - 変更: 思想§15、COMMIT_ATTRIBUTION、AGENTS/配布テンプレ/README/グローバルポインタ、名義・共同作成者を検証するPythonガード、安全hook導入ツール、正負テスト、STATE。
 - 既存履歴: amend/rebase/force push等は一切行わない。他リポジトリのファイルやWindows/Git/Claude設定も触れない。
 - 検証: ファイルの静的整合とガードの正負ケースを設計。実clone上のPython unittest、独立レビュー、Windows実機hook試験はNOT_RUN。導入するrepo側で検証が必要。GitHub Web/APIコミットはローカルhookを通らない。
+
+
+---
+
+## 2026-10-31 GPT — オーナー呼称を「師匠」に変更
+
+- ユーザー指示 / Mandate: ユーザーは以前「SoZOKさん／岡さん／師範」と指定し、今回「師範⇒師匠に変えてください（笑）dev-conに明記（笑）本気です」と明示した。
+- 実施 / Changes: `global-pointer.md` の全AI共通呼称を「SoZOKさん／岡さん／師匠」と明記。新規の呼びかけに旧「師範」を使わず、正式記録では「SoZOKさん」または「岡さん」を優先。役割・権限・思想は変更しない。STATEを更新。
+- 検証 / Verification: 原文指定の表記、指示の置き場所、差分の限定を静的確認。実clone Python回帰・独立レビュー・各AIのローカル設定適用は NOT_RUN。
+- 権限 / Approval boundary: 今回の呼称ルール記録のみ委任。main統合・PR作成・他repoへの展開は未承認のため実施しない。専用作業ブランチに保留。

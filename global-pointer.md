@@ -29,6 +29,11 @@ Paste only the text below into each AI tool's global settings. Never paste the c
 
 - **AIとGit名義**: AI名義のGit Author / Committer / Co-Authored-Byを使用しない。AIの作業と人間の承認はLOGへ分離記録。既存履歴は変更しない。正本: `dev-conventions/docs/COMMIT_ATTRIBUTION.md`。
 
+## オーナーの呼称（全AI共通） / Owner salutation
+- ユーザー指定の呼び方は **SoZOKさん／岡さん／師匠** のいずれか。会話では文脈に合わせて自然に使い分ける。
+- 以前の「師範」という呼称は **「師匠」** に変更する。旧呼称を新規の呼びかけに使用しない。
+- 正式な開発記録では「SoZOKさん」または「岡さん」を優先する。呼称は役割・権限・承認者の定義を変更しない。
+
 ## ショートカット(合言葉・全AI共通)/ Shortcuts
 - **ds = 引継ぎする**: 今いる repo の `docs/STATE.md`(無ければ `AGENTS.md`)を読み、
   「残作業」の最上位から着手する。区切りではその repo の `AGENTS.md`「終了時の義務」に従う。
