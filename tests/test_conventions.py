@@ -373,7 +373,7 @@ class DR1InvestmentGateDesign(unittest.TestCase):
                      "global-pointer.md", "docs/DEVELOPMENT_PHILOSOPHY.md"):
             with self.subTest(path=path):
                 self.assertIn("DR1_INVESTMENT_GATE_V1.md", _read(path))
-        for path in ("AGENTS.md", "templates/AGENTS.template.md",
+        for path in ("README.md", "AGENTS.md", "templates/AGENTS.template.md",
                      "docs/DEVELOPMENT_PHILOSOPHY.md"):
             with self.subTest(non_bypass=path):
                 self.assertIn("個別の「GOにして」という指示で上書きしない", _read(path))

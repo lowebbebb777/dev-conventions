@@ -24,7 +24,7 @@ Keep the repo in a state where the next runner can locate the current position b
 規約の層: `docs/DEVELOPMENT_PHILOSOPHY.md`（権限・思想）→ `README.md`（構成・原則）→
 `AGENTS.md`（全 AI の実行入口）→ `docs/STATE.md`（現在地）/ `docs/LOG.md`（承認・履歴）/
 `docs/IDEAS.md`（棚）。引継ぎの既存優先順位は README > global-pointer > STATE。
-明示されたユーザー指示と承認済みの実装契約を、一般規約で上書きしない。
+明示されたユーザー指示と承認済み実装契約は通常の作業既定値より優先する。ただし正式採用済みDR1 Investment Gateの個別案件の合格条件は、個別の「GOにして」という指示で上書きしない。ユーザーはPENDING/STOPを選択でき、GO基準の変更は正式改定手続きに限る。
 
 ## 商品開発のDesign Review（DR0〜DR6）
 
