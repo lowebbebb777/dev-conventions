@@ -385,7 +385,7 @@ class DR1InvestmentGateDesign(unittest.TestCase):
     def test_pending_lowers_priority_but_does_not_ban_work(self):
         design = _read("docs/DR1_INVESTMENT_GATE_V1.md")
         for marker in ("PENDINGは開発禁止ではなく", "空き時間での小規模・可逆な開発",
-                       "優先順位を下げる判断", "証拠不足だけでSTOPにしない"):
+                       "優先順位を下げる判断", "STOPは証拠不足を理由に出さない"):
             with self.subTest(marker=marker):
                 self.assertIn(marker, design)
 
